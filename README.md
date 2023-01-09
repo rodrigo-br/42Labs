@@ -41,3 +41,18 @@ Os itens a seguir não são obrigatórios, mas são funcionalidades que darão m
 - Uso de ferramentas externas para planejamento nas etapas de desenvolvimento.
 
 <sub><sup>[Importante](https://xkcd.com/1381/)</sup></sub>
+
+
+### Fase 1 - Estudo
+
+A fim de compreender do que se trata o projeto, os desafios que irei
+enfrentar e o aprendizado pendente necessário para completar a tarefa,
+fui em busca de conteúdos rápidos já disponíveis sobre o assunto.
+Minhas fontes de pesquisa iniciais foram:
+
+
+Essa playlist no YouTube: [Algoritmo de Huffman em C](https://www.youtube.com/watch?v=o8UPZ_KDWdU&list=PLqJK4Oyr5WShtxF1Ch3Vq4b1Dzzb-WxbP)
+
+
+Este livro: [Programação em C++ - Algoritmos e Estrututas de Dados](https://a.co/d/0LGtXRI)
+
