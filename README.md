@@ -56,3 +56,34 @@ Essa playlist no YouTube: [Algoritmo de Huffman em C](https://www.youtube.com/wa
 
 Este livro: [Programação em C++ - Algoritmos e Estrututas de Dados](https://a.co/d/0LGtXRI)
 
+
+
+### Fase 2 - Construção das principais estruturas de dados
+
+Resolvi começar pelo básico, e apenas construir as principais estruturas
+que eu vi necessidade, iniciando pela Árvore Huffman.
+Para isso, faz-se necessário o uso de uma lista de ponteiros para nós
+da árvore. O algoritmo de construção da árvore se descreve nos seguintes
+passos:
+
+- Analisar a mensagem a compactar;
+
+- Registrar em uma *tabela* o número de ocorrências de cada símbolo;
+
+- Criar um nó para cada símbolo, constituído por um atributo que identifique
+o *símbolo* e outro com o *número de ocorrências* do mesmo;
+
+- Inserir os ponteiros para nós em uma lista, em ordem crescente, ordenados
+pelo *número de ocorrências*;
+
+- Recursivamente, criar um nó intermediario, realizando as seguintes ações:
+
+	- Remover os dois ponteiros iniciais;
+	- Iniciar left e right do nó criado os ponteiros
+	removidos;
+	- Iniciar o atributo *número de ocorrências* com
+	a soma dos atributos *número de ocorrências* dos
+	nós left e right por ele apontados;
+	- Inserir ordenadamente na lista o apontador para o nó criado, ordenados pelo *número de ocorrências*;
+
+- Quando a lista tiver apenas um ponteiro, este ponteiro apontará para a raiz da Árvore.
