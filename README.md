@@ -107,3 +107,14 @@ Agora que tenho a estrutura da árvore montada, só criar algumas funções para
 Próxima estrutura a ser criada é um mapa dos symbolos e seus
 respectivos códigos. Como em uma árvore, os percursos da raiz para qualquer uma das *folhas* (Nós onde os dois descendentes, left e right, são nulos) são únicos, a codificação e a descodificação dos códigos têm sempre uma árvore associada.
 
+
+## Fase 3 - Encode
+
+A parte inicial da fase de compressão, consiste em criar uma
+representação em string do que eu pretendo que seja o novo
+texto comprimido em bits. Depois vou precisar descobrir como fazer
+essa conversão da string para os bits de fato. Ainda não estou me
+preocupando com isso pois o foco inicial é conseguir criar o código
+e depois decodificar através do Decode. Dessa forma, poderei ter
+certeza de que estou conseguindo realizar todas as operações sem
+perdas de símbolos.

@@ -19,4 +19,6 @@ void	fill_map(t_map map, t_node *tree, char *path_as_bits, int index);
 
 void	print_map(t_map map);
 
+int		get_code_size(t_map map, char *str);
+
 #endif

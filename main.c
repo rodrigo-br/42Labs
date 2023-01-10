@@ -34,7 +34,7 @@ int main (void)
 {
 	int		occurrence_table[OT_SIZE];
 	int		n_of_symbols;
-	char	*str = "cavalinho ao vento";
+	char	*str = "sevlaa";
 	t_node	**array_of_nodes;
 	t_map	map;
 
@@ -51,4 +51,5 @@ int main (void)
 	map = constroy_map(get_height(huffman_tree));
 	fill_map(map, huffman_tree, "", get_height(huffman_tree));
 	print_map(map);
+	printf("size = %d\n", get_code_size(map, str));
 }

@@ -61,3 +61,12 @@ void	print_map(t_map map)
 			printf("Char(DEC) = %3d  code = %s\n", i, map[i]);
 	}
 }
+
+int		get_code_size(t_map map, char *str)
+{
+	int size = 0;
+
+	for (int i = 0; str[i]; i++)
+		size += strlen(map[str[i]]);
+	return (size);
+}
