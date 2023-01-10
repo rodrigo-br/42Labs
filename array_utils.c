@@ -1,5 +1,4 @@
-#include "array_utils.h"
-#include "occurrence_table.h"
+#include "header.h"
 
 /**
  * @brief Auxiliar function of fill_array, called in case of error in malloc

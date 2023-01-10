@@ -1,5 +1,4 @@
-#include "huffman.h"
-#include "array_utils.h"
+#include "header.h"
 
 t_node	*create_new_node(char symbol, int occurrence)
 {
@@ -13,7 +12,7 @@ t_node	*create_new_node(char symbol, int occurrence)
 	return (node);
 }
 
-t_node *merge_nodes(t_node *n1, t_node *n2)
+t_node	*merge_nodes(t_node *n1, t_node *n2)
 {
 	t_node *new_node = create_new_node(0, n1->occurrence + n2->occurrence);
 
@@ -22,7 +21,7 @@ t_node *merge_nodes(t_node *n1, t_node *n2)
 	return (new_node);
 }
 
-t_node *create_tree(t_node **nodes, int size)
+t_node	*create_tree(t_node **nodes, int size)
 {
 	while (nodes[1])
 	{
@@ -48,7 +47,7 @@ int		get_height(t_node *tree)
 	return (right_height);
 }
 
-short is_leaf(t_node *tree)
+short	is_leaf(t_node *tree)
 {
 	return (tree->left == NULL && tree->right == NULL);
 }

@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include "occurrence_table.h"
-#include "huffman.h"
-#include "array_utils.h"
-#include "map_symbols.h"
+#include "header.h"
 
 void construct_occurrence_table(char *str, int (*occurrence_table)[OT_SIZE])
 {

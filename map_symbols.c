@@ -1,5 +1,4 @@
-#include "map_symbols.h"
-
+#include "header.h"
 
 /**
  * @brief constroy_map Auxiliar function, called in case of error in malloc
@@ -21,12 +20,12 @@ static void error_malloc_map(t_map map, int position)
 	map = NULL;
 }
 
-t_map constroy_map(int height)
+t_map	constroy_map(int height)
 {
-	t_map map = (t_map)malloc(sizeof(char *) * 256);
+	t_map map = (t_map)malloc(sizeof(char *) * (OT_SIZE + 1));
 	if (!map)
 		return (NULL);
-	for (int i = 0; i < 256; i++) {
+	for (int i = 0; i < (OT_SIZE + 1); i++) {
 		map[i] = (char *)calloc((height + 1), sizeof(char));
 		if (!map[i])
 			return (error_malloc_map(map, i), NULL);
@@ -56,7 +55,7 @@ void	fill_map(t_map map, t_node *tree, char *path_as_bits, int index)
 
 void	print_map(t_map map)
 {
-	for (int i = 0; i < 255; i++) {
+	for (int i = 0; i < OT_SIZE; i++) {
 		if (strlen(map[i]))
 			printf("Char(DEC) = %3d  code = %s\n", i, map[i]);
 	}

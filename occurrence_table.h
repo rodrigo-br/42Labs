@@ -1,10 +1,7 @@
 #ifndef OCCURRENCE_TABLE_H
 # define OCCURRENCE_TABLE_H
 
-# include <string.h>
-# include <stdio.h>
-
-# define OT_SIZE 255
+# include "header.h"
 
 /**
  * @brief Initialize the occurrence table with 0 

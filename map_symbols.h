@@ -1,9 +1,7 @@
 #ifndef MAP_SYMBOLS_H
 # define MAP_SYMBOLS_H
 
-#include <stdlib.h>
-#include "huffman.h"
-#include "string.h"
+#include "header.h"
 
 typedef char** t_map;
 
