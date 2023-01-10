@@ -106,3 +106,4 @@ Agora que tenho a estrutura da árvore montada, só criar algumas funções para
 
 Próxima estrutura a ser criada é um mapa dos symbolos e seus
 respectivos códigos. Como em uma árvore, os percursos da raiz para qualquer uma das *folhas* (Nós onde os dois descendentes, left e right, são nulos) são únicos, a codificação e a descodificação dos códigos têm sempre uma árvore associada.
+

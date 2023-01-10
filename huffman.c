@@ -13,6 +13,15 @@ t_node	*create_new_node(char symbol, int occurrence)
 	return (node);
 }
 
+t_node *merge_nodes(t_node *n1, t_node *n2)
+{
+	t_node *new_node = create_new_node(0, n1->occurrence + n2->occurrence);
+
+	new_node->left = n1;
+	new_node->right = n2;
+	return (new_node);
+}
+
 t_node *create_tree(t_node **nodes, int size)
 {
 	while (nodes[1])

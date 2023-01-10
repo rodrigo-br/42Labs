@@ -2,7 +2,7 @@
 #include "occurrence_table.h"
 
 /**
- * @brief Auxiliar function to fill_array, called in case of error in malloc
+ * @brief Auxiliar function of fill_array, called in case of error in malloc
  * free array_of_nodes and set to NULL
  * 
  * @param array_of_nodes t_node **
