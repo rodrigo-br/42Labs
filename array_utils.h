@@ -28,6 +28,6 @@ void print_array(t_node **array_of_nodes, int n_of_symbols);
  * 
  * @param array_of_nodes t_node **
  */
-void sort_array(t_node **array_of_nodes);
+void sort_array(t_node **array_of_nodes, int n_of_symbols);
 
 #endif
