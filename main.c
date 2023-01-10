@@ -31,7 +31,7 @@ int main (void)
 	setlocale(LC_ALL, "");
 	int				occurrence_table[OT_SIZE];
 	int				n_of_symbols;
-	unsigned char	*str = "sevlaa";
+	unsigned char	*str = "cavalinho";
 	t_node			**array_of_nodes;
 	t_map			map;
 
@@ -48,5 +48,8 @@ int main (void)
 	map = constroy_map(get_height(huffman_tree));
 	fill_map(map, huffman_tree, "", get_height(huffman_tree));
 	unsigned char *encoded_message = encode(map, str);
-	printf("%s\n", encoded_message);
+	unsigned char *decoded_message = decode(huffman_tree, encoded_message);
+	printf("Original msg = %s\n", str);
+	printf("Coded msg = %s\n", encoded_message);
+	printf("Decoded msg = %s\n", decoded_message);
 }

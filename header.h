@@ -14,5 +14,6 @@
 # include "huffman.h"
 # include "map_symbols.h"
 # include "encoder.h"
+# include "decoder.h"
 
 #endif

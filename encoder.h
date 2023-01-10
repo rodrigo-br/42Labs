@@ -4,7 +4,9 @@
 #include "header.h"
 
 /**
- * @brief Allocates and create the encoded message
+ * @brief Allocates and create the encoded message. Once the map is filled,
+ * iterates through the original msg and concatenates the equivalent code to
+ * each symbol until the original msg is over.
  * 
  * @param map t_map
  * @param str the original message as u_char*
