@@ -54,7 +54,7 @@ short	is_leaf(t_node *tree)
 
 void	print_tree(t_node *tree, int level)
 {
-	if (tree->left == NULL && tree->right == NULL)
+	if (is_leaf(tree))
 		printf("Leaf: %c, level: %d\n", tree->symbol, level);
 	else {
 		print_tree(tree->left, level + 1);

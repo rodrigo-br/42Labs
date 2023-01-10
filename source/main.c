@@ -31,7 +31,7 @@ int main (void)
 	setlocale(LC_ALL, "");
 	int				occurrence_table[OT_SIZE];
 	int				n_of_symbols;
-	unsigned char	*str = "cavalinho";
+	unsigned char	*str = "cavalinhoovansoivasjnvoiasjv90asjv09asu0j903nm920ni09sdni09dinsa90dnas90dnaskdjnasklcxnkjlcjknsacnjksjknacjksanjkas0c09asc09ascu09asjcklasn clksanckascjkbasjkcbsajkbcjksa";
 	t_node			**array_of_nodes;
 	t_map			map;
 

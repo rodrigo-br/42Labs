@@ -108,7 +108,7 @@ Próxima estrutura a ser criada é um mapa dos symbolos e seus
 respectivos códigos. Como em uma árvore, os percursos da raiz para qualquer uma das *folhas* (Nós onde os dois descendentes, left e right, são nulos) são únicos, a codificação e a descodificação dos códigos têm sempre uma árvore associada.
 
 
-## Fase 3 - Encode
+## Fase 3 - Encode / Decode
 
 A parte inicial da fase de compressão, consiste em criar uma
 representação em string do que eu pretendo que seja o novo
@@ -118,3 +118,6 @@ preocupando com isso pois o foco inicial é conseguir criar o código
 e depois decodificar através do Decode. Dessa forma, poderei ter
 certeza de que estou conseguindo realizar todas as operações sem
 perdas de símbolos.
+
+Com o decode implementado, foi possível testar e ver que a decodificação não gerou prejuízos aos símbolos. Com isso, falta apenas alguns detalhes para acertar, de forma a permitir acentuações e caracteres especiais, acima de 127
+na tabela ASCII.
