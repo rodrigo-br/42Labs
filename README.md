@@ -91,5 +91,5 @@ pelo *número de ocorrências*;
 Os nós intermediários não recebem nenhum valor significativo no atributo
 *símbolo*.
 
-Logo, para criar a Árvore Huffman, nota-se a necessidade de criar uma tabela
-de ocorrência dos símbolos.
+Logo, para criar a Árvore Huffman, nota-se a necessidade de criar uma tabela de ocorrência dos símbolos.
+Após a criação da tabela, inicio a lista de nós e faço a ordenação dos mesmos.
