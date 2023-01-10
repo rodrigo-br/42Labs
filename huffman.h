@@ -1,8 +1,7 @@
 #ifndef HUFFMAN_H
 # define HUFFMAN_H
 
-# include <stdlib.h>
-# include <stdio.h>
+#include "header.h"
 
 /**
  * @brief Nodes of Huffman's Tree
@@ -31,7 +30,7 @@ typedef struct s_list {
  * @param occurrence the occurrence frequency of the character
  * @return Returns a new t_node allocated and initialized
  */
-t_node	*create_new_node(char symbol, int occurrence);
+t_node	*create_new_node(unsigned char symbol, int occurrence);
 
 /**
  * @brief Creates a new node and initializes it with the sum of the occurrences

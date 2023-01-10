@@ -1,6 +1,6 @@
 #include "header.h"
 
-t_node	*create_new_node(char symbol, int occurrence)
+t_node	*create_new_node(unsigned char symbol, int occurrence)
 {
 	t_node *node;
 

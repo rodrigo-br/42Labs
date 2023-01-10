@@ -1,6 +1,6 @@
 #include "header.h"
 
-void construct_occurrence_table(char *str, int (*occurrence_table)[OT_SIZE])
+void construct_occurrence_table(unsigned char *str, int (*occurrence_table)[OT_SIZE])
 {
 	occurrence_table_init(occurrence_table);
 	count_occurrences(str, occurrence_table);
@@ -28,11 +28,11 @@ void destroy_array_of_nodes(t_node **n)
 
 int main (void)
 {
-	int		occurrence_table[OT_SIZE];
-	int		n_of_symbols;
-	char	*str = "sevlaa";
-	t_node	**array_of_nodes;
-	t_map	map;
+	int				occurrence_table[OT_SIZE];
+	int				n_of_symbols;
+	unsigned char	*str = "sevlaa";
+	t_node			**array_of_nodes;
+	t_map			map;
 
 	construct_occurrence_table(str, &occurrence_table);
 	n_of_symbols = get_n_of_symbols(occurrence_table);

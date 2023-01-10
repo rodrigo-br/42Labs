@@ -18,7 +18,7 @@ void	occurrence_table_init(int (*occurrence_table)[OT_SIZE]);
  * @param message some string text. May include non printable characters
  * @param occurrence_table a reference to the occurence table
  */
-void count_occurrences(char *message, int (*occurrence_table)[OT_SIZE]);
+void count_occurrences(unsigned char *message, int (*occurrence_table)[OT_SIZE]);
 
 /**
  * @brief Count the number of symbols in the occurrence table

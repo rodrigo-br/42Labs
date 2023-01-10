@@ -3,7 +3,7 @@
 
 #include "header.h"
 
-typedef char** t_map;
+typedef unsigned char** t_map;
 
 /**
  * @brief Allocates a new t_map filled with 0s
@@ -22,7 +22,7 @@ t_map constroy_map(int height);
  * @param path_as_bits starts empty and add 0 to each left and 1 to each right
  * @param index is the height of the tree
  */
-void	fill_map(t_map map, t_node *tree, char *path_as_bits, int index);
+void	fill_map(t_map map, t_node *tree, unsigned char *path_as_bits, int index);
 
 /**
  * @brief Debugger function just print the map
@@ -39,6 +39,6 @@ void	print_map(t_map map);
  * @param str message represented as string
  * @return int the size of the encoded message.
  */
-int		get_code_size(t_map map, char *str);
+int		get_code_size(t_map map, unsigned char *str);
 
 #endif
