@@ -57,7 +57,6 @@ Essa playlist no YouTube: [Algoritmo de Huffman em C](https://www.youtube.com/wa
 Este livro: [Programação em C++ - Algoritmos e Estrututas de Dados](https://a.co/d/0LGtXRI)
 
 
-
 ### Fase 2 - Construção das principais estruturas de dados
 
 Resolvi começar pelo básico, e apenas construir as principais estruturas
@@ -87,3 +86,10 @@ pelo *número de ocorrências*;
 	- Inserir ordenadamente na lista o apontador para o nó criado, ordenados pelo *número de ocorrências*;
 
 - Quando a lista tiver apenas um ponteiro, este ponteiro apontará para a raiz da Árvore.
+
+
+Os nós intermediários não recebem nenhum valor significativo no atributo
+*símbolo*.
+
+Logo, para criar a Árvore Huffman, nota-se a necessidade de criar uma tabela
+de ocorrência dos símbolos.
