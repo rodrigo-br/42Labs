@@ -29,19 +29,31 @@ void destroy_array_of_nodes(t_node **n)
 	free(n);
 }
 
+t_node *merge_nodes(t_node *n1, t_node *n2)
+{
+	t_node *new_node = create_new_node(0, n1->occurrence + n2->occurrence);
+
+	new_node->left = n1;
+	new_node->right = n2;
+	return (new_node);
+}
+
 int main (void)
 {
 	int occurrence_table[OT_SIZE];
 	int n_of_symbols;
-	char *str = "cavalinho na chuva ao vento";
+	char *str = "Vamos aprender a programa";
 	t_node **array_of_nodes;
 
 	construct_occurrence_table(str, &occurrence_table);
 	n_of_symbols = get_n_of_symbols(occurrence_table);
 	array_of_nodes = (t_node **)malloc(sizeof(t_node *) * (n_of_symbols + 1));
+	if (!array_of_nodes)
+		return (EXIT_FAILURE);
 	fill_array(array_of_nodes, occurrence_table);
+	if (!array_of_nodes)
+		return (EXIT_FAILURE);
 	sort_array(array_of_nodes, n_of_symbols);
-	print_array(array_of_nodes, n_of_symbols);
-	destroy_array_of_nodes(array_of_nodes);
-
+	t_node *huffman_tree = create_tree(array_of_nodes, n_of_symbols);
+	print_tree(huffman_tree, 0);
 }

@@ -30,4 +30,16 @@ void print_array(t_node **array_of_nodes, int n_of_symbols);
  */
 void sort_array(t_node **array_of_nodes, int n_of_symbols);
 
+/**
+ * @brief Create the linked list that will be used to 
+ * 
+ * @param array_of_nodes 
+ * @param n_of_symbols 
+ * @return t_list* 
+ */
+t_list	*array_to_list(t_node **array_of_nodes, int n_of_symbols);
+
+
+void slide_array_to_left(t_node **array_of_nodes);
+
 #endif
