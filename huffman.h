@@ -8,7 +8,7 @@
  * 
  */
 typedef struct s_node {
-	unsigned char	symbol;
+	wchar_t			symbol;
 	int				occurrence;
 	struct s_node	*left;
 	struct s_node	*right;

@@ -4,6 +4,8 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <wchar.h>
+# include <locale.h>
 
 # define OT_SIZE 255
 
@@ -11,5 +13,6 @@
 # include "array_utils.h"
 # include "huffman.h"
 # include "map_symbols.h"
+# include "encoder.h"
 
 #endif

@@ -28,6 +28,7 @@ void destroy_array_of_nodes(t_node **n)
 
 int main (void)
 {
+	setlocale(LC_ALL, "");
 	int				occurrence_table[OT_SIZE];
 	int				n_of_symbols;
 	unsigned char	*str = "sevlaa";
@@ -46,6 +47,6 @@ int main (void)
 	t_node *huffman_tree = create_tree(array_of_nodes, n_of_symbols);
 	map = constroy_map(get_height(huffman_tree));
 	fill_map(map, huffman_tree, "", get_height(huffman_tree));
-	print_map(map);
-	printf("size = %d\n", get_code_size(map, str));
+	unsigned char *encoded_message = encode(map, str);
+	printf("%s\n", encoded_message);
 }
