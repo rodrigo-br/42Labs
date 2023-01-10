@@ -25,6 +25,20 @@ t_node *create_tree(t_node **nodes, int size)
 	return (nodes[0]);
 }
 
+int		get_height(t_node *tree)
+{
+	int		left_height;
+	int		right_height;
+	if (!tree)
+		return (-1);
+	left_height = get_height(tree->left) + 1;
+	right_height = get_height(tree->right) + 1;
+
+	if (left_height > right_height)
+		return (left_height);
+	return (right_height);
+}
+
 void	print_tree(t_node *tree, int level)
 {
 	if (tree->left == NULL && tree->right == NULL)

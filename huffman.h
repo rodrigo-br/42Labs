@@ -54,6 +54,20 @@ t_node	*merge_nodes(t_node *left, t_node *right);
  */
 t_node *create_tree(t_node **nodes, int size);
 
+/**
+ * @brief Get the height of the tree
+ * 
+ * @param tree the root of the huffman's tree
+ * @return returns the height of the tree
+ */
+int		get_height(t_node *tree);
+
+/**
+ * @brief Prints recursively the Huffman's Tree. Auxiliar debug function
+ * 
+ * @param tree the root of the tree
+ * @param level starts with 0 and prints the height of each node.
+ */
 void	print_tree(t_node *tree, int level);
 
 

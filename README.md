@@ -1,3 +1,6 @@
+<details>
+	<summary>Subject</summary>
+
 # Labs 4º Edição
 
 ## Desafio
@@ -41,9 +44,9 @@ Os itens a seguir não são obrigatórios, mas são funcionalidades que darão m
 - Uso de ferramentas externas para planejamento nas etapas de desenvolvimento.
 
 <sub><sup>[Importante](https://xkcd.com/1381/)</sup></sub>
+</details>
 
-
-### Fase 1 - Estudo
+## Fase 1 - Estudo
 
 A fim de compreender do que se trata o projeto, os desafios que irei
 enfrentar e o aprendizado pendente necessário para completar a tarefa,
@@ -57,7 +60,9 @@ Essa playlist no YouTube: [Algoritmo de Huffman em C](https://www.youtube.com/wa
 Este livro: [Programação em C++ - Algoritmos e Estrututas de Dados](https://a.co/d/0LGtXRI)
 
 
-### Fase 2 - Construção das principais estruturas de dados
+## Fase 2 - Construção das principais estruturas de dados
+
+### 2.1 Huffman's Tree
 
 Resolvi começar pelo básico, e apenas construir as principais estruturas
 que eu vi necessidade, iniciando pela Árvore Huffman.
@@ -93,3 +98,11 @@ Os nós intermediários não recebem nenhum valor significativo no atributo
 
 Logo, para criar a Árvore Huffman, nota-se a necessidade de criar uma tabela de ocorrência dos símbolos.
 Após a criação da tabela, inicio a lista de nós e faço a ordenação dos mesmos.
+
+Agora que tenho a estrutura da árvore montada, só criar algumas funções para criar a árvore, seguindo os passos acima e a árvore fica prontinha.
+
+
+### 2.2 Map
+
+Próxima estrutura a ser criada é um mapa dos symbolos e seus
+respectivos códigos. Como em uma árvore, os percursos da raiz para qualquer uma das *folhas* (Nós onde os dois descendentes, left e right, são nulos) são únicos, a codificação e a descodificação dos códigos têm sempre uma árvore associada.

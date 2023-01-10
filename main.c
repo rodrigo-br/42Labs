@@ -42,7 +42,7 @@ int main (void)
 {
 	int occurrence_table[OT_SIZE];
 	int n_of_symbols;
-	char *str = "Vamos aprender a programa";
+	char *str = "aaaaabbbbcccddss12";
 	t_node **array_of_nodes;
 
 	construct_occurrence_table(str, &occurrence_table);
