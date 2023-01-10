@@ -2,6 +2,8 @@
 # define MAP_SYMBOLS_H
 
 #include <stdlib.h>
+#include "huffman.h"
+#include "string.h"
 
 typedef char** t_map;
 
@@ -12,5 +14,9 @@ typedef char** t_map;
  * @return t_map Returns a new t_map allocated with calloc (filled with 0s)
  */
 t_map constroy_map(int height);
+
+void	fill_map(t_map map, t_node *tree, char *path_as_bits, int index);
+
+void	print_map(t_map map);
 
 #endif

@@ -48,6 +48,11 @@ int		get_height(t_node *tree)
 	return (right_height);
 }
 
+short is_leaf(t_node *tree)
+{
+	return (tree->left == NULL && tree->right == NULL);
+}
+
 void	print_tree(t_node *tree, int level)
 {
 	if (tree->left == NULL && tree->right == NULL)

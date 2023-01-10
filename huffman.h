@@ -63,6 +63,14 @@ t_node *create_tree(t_node **nodes, int size);
 int		get_height(t_node *tree);
 
 /**
+ * @brief return 1 if the node is a leaf, 0 otherwise
+ * 
+ * @param Tree t_node *
+ * @return short int
+ */
+short is_leaf(t_node *Tree);
+
+/**
  * @brief Prints recursively the Huffman's Tree. Auxiliar debug function
  * 
  * @param tree the root of the tree

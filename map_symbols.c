@@ -1,5 +1,6 @@
 #include "map_symbols.h"
 
+
 /**
  * @brief constroy_map Auxiliar function, called in case of error in malloc
  * free map and set to NULL
@@ -32,4 +33,31 @@ t_map constroy_map(int height)
 	}
 	map[255] = NULL;
 	return (map);
+}
+
+void	fill_map(t_map map, t_node *tree, char *path_as_bits, int index)
+{
+	char	left[index];
+	char	right[index];
+
+	if (is_leaf(tree))
+		strcpy(map[tree->symbol], path_as_bits);
+	else
+	{
+		strcpy(left, path_as_bits);
+		strcpy(right, path_as_bits);
+		strcat(left, "0");
+		strcat(right, "1");
+
+		fill_map(map, tree->left, left, index);
+		fill_map(map, tree->right, right, index);
+	}
+}
+
+void	print_map(t_map map)
+{
+	for (int i = 0; i < 255; i++) {
+		if (strlen(map[i]))
+			printf("Char(DEC) = %3d  code = %s\n", i, map[i]);
+	}
 }
