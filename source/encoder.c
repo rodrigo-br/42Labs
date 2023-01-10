@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../include_headers/header.h"
 
 static unsigned char	*get_bit_code(t_map map, unsigned char c)
 {

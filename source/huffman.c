@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../include_headers/header.h"
 
 t_node	*create_new_node(unsigned char symbol, int occurrence)
 {

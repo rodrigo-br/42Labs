@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../include_headers/header.h"
 
 /**
  * @brief Auxiliar function of fill_array, called in case of error in malloc

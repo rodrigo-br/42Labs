@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../include_headers/header.h"
 
 unsigned char	*decode(t_node *tree, unsigned char *coded_msg)
 {

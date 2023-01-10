@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../include_headers/header.h"
 
 /**
  * @brief constroy_map Auxiliar function, called in case of error in malloc

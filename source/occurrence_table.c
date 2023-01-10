@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../include_headers/header.h"
 
 void occurrence_table_init(int (*occurrence_table)[OT_SIZE])
 {
