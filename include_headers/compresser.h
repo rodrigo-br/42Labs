@@ -5,13 +5,20 @@
 
 typedef unsigned char * bits;
 
+typedef struct s_bit_array
+{
+	bits	bit_array;
+	size_t	str_len;
+	size_t	byte_len;
+}	t_bit_array;
+
 /**
  * @brief Allocates a new bit_array and set all bits accordinaly to the message
  * 
  * @param msg unsigned char *
  * @return unsigned char* Returns a new array of bits compressed
  */
-bits	constroy_bit_array(unsigned char *msg);
+t_bit_array constroy_bit_array(unsigned char *msg);
 
 /**
  * @brief Set the bit of the bit_array at the position to 1
@@ -69,6 +76,6 @@ short	bit_test(bits	bit_array, size_t position);
  * @param bit_array bits
  * @param str_lenght size_t
  */
-void bit_description(bits bit_array, size_t str_lenght);
+void bit_description(t_bit_array bit_array);
 
 #endif

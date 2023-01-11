@@ -151,3 +151,4 @@ Novas referências foram adicionadas:
 [YouTube link](https://youtu.be/aMAM5vL7wTs?t=639) (exatamente no minuto que marquei)
 
 [YouTube link (continuação)](https://www.youtube.com/watch?v=Ew2QnDeTCCE)
+

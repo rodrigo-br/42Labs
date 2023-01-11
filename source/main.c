@@ -34,7 +34,7 @@ int main (void)
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
-	bits			bit_array;
+	t_bit_array		bit_array;
 	t_map			map;
 
 
@@ -74,11 +74,11 @@ int main (void)
 	// Bit Array (Still testing)
 	bit_array = constroy_bit_array(encoded_message);
 	printf("Bit Array = ");
-	bit_description(bit_array, strlen((char *)encoded_message));
+	bit_description(bit_array);
 
 	// Free Memory
-	free(bit_array);
 	destroy_it_all(huffman_tree, map, array_of_nodes);
+	free(bit_array.bit_array);
 	free(encoded_message);
 	free(decoded_message);
 	free(str);

@@ -1,17 +1,19 @@
 #include "../include_headers/header.h"
 
-bits constroy_bit_array(unsigned char *msg)
+t_bit_array constroy_bit_array(unsigned char *msg)
 {
-	bits bit_array;
+	t_bit_array	data;
 
-	bit_array = (bits)calloc(byte_len(strlen((char *)msg)), sizeof(unsigned char));
-	for (size_t i = 0; i < strlen((char *)msg); i++) {
+	data.str_len = strlen((char *)msg);
+	data.byte_len = byte_len(data.str_len);
+	data.bit_array = (bits)calloc(data.byte_len, sizeof(unsigned char));
+	for (size_t i = 0; i < data.str_len; i++) {
 		if (msg[i] == '1')
-			set_bit(bit_array, i);
+			set_bit(data.bit_array, i);
 		else
-			bit_clear(bit_array, i);
+			bit_clear(data.bit_array, i);
 	}
-	return (bit_array);
+	return (data);
 }
 
 void	set_bit(bits bit_array, size_t position)
@@ -44,10 +46,10 @@ short	bit_test(bits bit_array, size_t position)
 	return (bit_array[bit_index(position)] & mask_bit(position));
 }
 
-void bit_description(bits bit_array, size_t str_lenght)
+void bit_description(t_bit_array bit_array)
 {
-	for (size_t i = 0; i < str_lenght; i++) {
-		if (bit_test(bit_array, i))
+	for (size_t i = 0; i < bit_array.str_len; i++) {
+		if (bit_test(bit_array.bit_array, i))
 			printf("1");
 		else
 			printf("0");
