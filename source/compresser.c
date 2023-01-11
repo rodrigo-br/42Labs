@@ -46,10 +46,10 @@ short	bit_test(bits bit_array, size_t position)
 	return (bit_array[bit_index(position)] & mask_bit(position));
 }
 
-void bit_description(t_bit_array bit_array)
+void bit_description(t_bit_array data)
 {
-	for (size_t i = 0; i < bit_array.str_len; i++) {
-		if (bit_test(bit_array.bit_array, i))
+	for (size_t i = 0; i < data.str_len; i++) {
+		if (bit_test(data.bit_array, i))
 			printf("1");
 		else
 			printf("0");

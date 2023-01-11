@@ -20,7 +20,7 @@ t_node	*merge_nodes(t_node *n1, t_node *n2)
 	new_node->right = n2;
 	return (new_node);
 }
-// 1(x) 01   1(y) 11   3(z) 0
+
 t_node	*create_tree(t_node **nodes, int size)
 {
 	while (nodes[1])

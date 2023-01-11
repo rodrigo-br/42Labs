@@ -30,11 +30,11 @@ void print_coded(unsigned char *str);
 
 int main (void)
 {
-	unsigned char	*str = (unsigned char *)strdup("ção");
+	unsigned char	*str = (unsigned char *)strdup("cavalinho na chuva katchau");
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
-	t_bit_array		bit_array;
+	t_bit_array		data;
 	t_map			map;
 
 
@@ -51,7 +51,6 @@ int main (void)
 
 	// Huffman Tree
 	t_node *huffman_tree = create_tree(array_of_nodes, n_of_symbols);
-
 
 	// Map
 	map = constroy_map(get_height(huffman_tree));
@@ -70,15 +69,22 @@ int main (void)
 	printf("Original msg = %s\n", str);
 	print_coded(encoded_message);
 	printf("Decoded msg = %s\n", decoded_message);
+	// printf("tamanho da msg original = %ld\n", strlen((char *)str));
+	// printf("tamanho da mensagem codificada = %ld\n", strlen((char *)encoded_message));
 
-	// Bit Array (Still testing)
-	bit_array = constroy_bit_array(encoded_message);
+
+	// Bit Array
+	data = constroy_bit_array(encoded_message);
 	printf("Bit Array = ");
-	bit_description(bit_array);
+	bit_description(data);
+	// printf("tamanho da msg comprimida = %ld\n", data.byte_len);
+
+	char block = attach_shm("testesh", 1, 0);
+	(void)block;
 
 	// Free Memory
 	destroy_it_all(huffman_tree, map, array_of_nodes);
-	free(bit_array.bit_array);
+	free(data.bit_array);
 	free(encoded_message);
 	free(decoded_message);
 	free(str);
