@@ -20,17 +20,17 @@ t_node	*merge_nodes(t_node *n1, t_node *n2)
 	new_node->right = n2;
 	return (new_node);
 }
-
+// 1(x) 01   1(y) 11   3(z) 0
 t_node	*create_tree(t_node **nodes, int size)
 {
 	while (nodes[1])
-	{
+	{//  14 NULL NULL NULL NULL
 		nodes[0] = merge_nodes(nodes[0], nodes[1]);
 		slide_array_to_left(nodes);
 		size--;
 		sort_array(nodes, size);
 	}
-	
+
 	return (nodes[0]);
 }
 

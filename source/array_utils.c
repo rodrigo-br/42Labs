@@ -61,11 +61,11 @@ void sort_array(t_node **aon, int n_of_symbols)
 			return;
 		swap = 0;
 		for (int j = 0; j < n_of_symbols - i - 1; j++) {
-				if (aon[j]->occurrence > aon[j + 1]->occurrence)
-				{
-					swap_nodes(aon, j);
-					swap = 1;
-				}
+			if (aon[j]->occurrence > aon[j + 1]->occurrence)
+			{
+				swap_nodes(aon, j);
+				swap = 1;
+			}
 		}
 	}
 }

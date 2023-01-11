@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <wchar.h>
+# include <limits.h>
 
 # define OT_SIZE 255
 
@@ -14,5 +15,6 @@
 # include "map_symbols.h"
 # include "encoder.h"
 # include "decoder.h"
+# include "compresser.h"
 
 #endif

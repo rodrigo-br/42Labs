@@ -1,12 +1,5 @@
 #include "../include_headers/header.h"
 
-static int construct_occurrence_table(unsigned char *str, int (*occurrence_table)[OT_SIZE])
-{
-	occurrence_table_init(occurrence_table);
-	count_occurrences(str, occurrence_table);
-	return get_n_of_symbols(*occurrence_table);
-}
-
 /**
  * @brief Free the memory of all the important structures in the code
  * 
@@ -14,44 +7,33 @@ static int construct_occurrence_table(unsigned char *str, int (*occurrence_table
  * @param map t_map used to map the code of each symbol
  * @param array t_node ** used to store the nodes of the tree and sort then
  */
-static void	destroy_it_all(t_node *tree, t_map map, t_node **array)
-{
-	destroy_tree(tree);
-	destroy_map(map);
-	free(array);
-}
+static void	destroy_it_all(t_node *tree, t_map map, t_node **array);
 
 /**
  * @brief	Fill the array of nodes with the symbols and their occurrences,
  * and sort it by the occurrences.
  * 
- * @param array_of_nodes 
- * @param occurrence_table 
- * @param n_of_symbols 
+ * @param array array_of_nodes
+ * @param ot occurrence_table
+ * @param n n_of_symbols
  * @return short 0 if success and 1 if failure on mallocs
  */
-static short populate_and_sort_array(t_node **array_of_nodes, int occurrence_table[OT_SIZE], int n_of_symbols)
-{
-	if (!array_of_nodes)
-		return (EXIT_FAILURE);
-	fill_array(array_of_nodes, occurrence_table);
-	if (!array_of_nodes)
-		return (EXIT_FAILURE);
-	sort_array(array_of_nodes, n_of_symbols);
-	return (EXIT_SUCCESS);
-}
+static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n);
+
+void print_coded(unsigned char *str);
 
 int main (void)
 {
-	int				occurrence_table[OT_SIZE];
-	int				n_of_symbols;
-	unsigned char	*str = (unsigned char *)strdup("ção");
+	unsigned char	*str = (unsigned char *)strdup("cavalinho na chuva ao vento pegando frio");
+	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
+	int				n_of_symbols;
 	t_map			map;
 
 
 	// Ocurrence Table
-	n_of_symbols = construct_occurrence_table(str, &occurrence_table);
+	count_occurrences(str, &occurrence_table);
+	n_of_symbols = get_n_of_symbols(occurrence_table);
 
 
 	// Array of nodes
@@ -79,15 +61,67 @@ int main (void)
 
 	// Debug
 	printf("Original msg = %s\n", str);
-	printf("Coded msg = %s\n", encoded_message);
+	print_coded(encoded_message);
 	printf("Decoded msg = %s\n", decoded_message);
 
 
+	// Bit Array (Still testing)
+	unsigned char *bit_array = (unsigned char *)calloc(bit_len(strlen((char *)encoded_message)), sizeof(unsigned char));
+	for (size_t i = 0; i < strlen((char *)encoded_message); i++) {
+		if (encoded_message[i] == '1')
+			set_bit(bit_array, i);
+		else
+			bit_clear(bit_array, i);
+	}
+	for (size_t i = 0; i < strlen((char *)encoded_message); i++) {
+		if (bit_test(bit_array, i))
+			printf("1");
+		else
+			printf("0");
+		if (i % 8 == 7)
+			printf(" ");
+	}
+	printf("\n%ld\n", bit_len(strlen((char *)encoded_message)));
+
 	// Free Memory
+	free(bit_array);
 	destroy_it_all(huffman_tree, map, array_of_nodes);
 	free(encoded_message);
 	free(decoded_message);
 	free(str);
 
 	return (EXIT_SUCCESS);
+}
+
+
+static void	destroy_it_all(t_node *tree, t_map map, t_node **array)
+{
+	destroy_tree(tree);
+	destroy_map(map);
+	free(array);
+}
+
+static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n)
+{
+	if (!array)
+		return (EXIT_FAILURE);
+	fill_array(array, ot);
+	if (!array)
+		return (EXIT_FAILURE);
+	sort_array(array, n);
+	return (EXIT_SUCCESS);
+}
+
+void print_coded(unsigned char *str)
+{
+	int	i = 0;
+ 
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		if (i % 8 == 7)
+			printf(" ");
+		i++;
+	}
+	printf("\n");
 }
