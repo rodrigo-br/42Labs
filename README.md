@@ -139,7 +139,7 @@ sobre macros, classes e conjuntos de operações
 relacionadas aos bits, de forma a melhorar o entendimento
 sobre o assunto. Nessa parte, minhas duas maiores fontes
 de pesquisa foram esse site: 
-![](https://c-faq.com/misc/bitsets.html)
+[bitsets](https://c-faq.com/misc/bitsets.html)
 
 e o Livro que indiquei acima, que possui uma implementação
 de uma classe BitArray que utiliza uma outra classe traits
@@ -148,5 +148,6 @@ visto que preferi criar funções ao usar as macros do link
 acima.
 
 Novas referências foram adicionadas:
-![](https://youtu.be/aMAM5vL7wTs?t=639) (exatamente no minuto que marquei)
-![](https://www.youtube.com/watch?v=Ew2QnDeTCCE)
+[YouTube link](https://youtu.be/aMAM5vL7wTs?t=639) (exatamente no minuto que marquei)
+
+[YouTube link (continuação)](https://www.youtube.com/watch?v=Ew2QnDeTCCE)
