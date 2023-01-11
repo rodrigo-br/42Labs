@@ -30,6 +30,7 @@ t_node	*create_tree(t_node **nodes, int size)
 		size--;
 		sort_array(nodes, size);
 	}
+	
 	return (nodes[0]);
 }
 
@@ -59,5 +60,15 @@ void	print_tree(t_node *tree, int level)
 	else {
 		print_tree(tree->left, level + 1);
 		print_tree(tree->right, level + 1);
+	}
+}
+
+void	destroy_tree(t_node *tree)
+{
+	if (tree)
+	{
+		destroy_tree(tree->left);
+		destroy_tree(tree->right);
+		free(tree);
 	}
 }

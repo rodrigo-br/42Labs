@@ -77,7 +77,13 @@ short is_leaf(t_node *Tree);
  */
 void	print_tree(t_node *tree, int level);
 
-
+/**
+ * @brief Frees the memory allocated for the Huffman's Tree by calling itself
+ * recursively until the leafs are reached.
+ * 
+ * @param tree 
+ */
+void	destroy_tree(t_node *tree);
 
 
 

@@ -41,4 +41,11 @@ void	print_map(t_map map);
  */
 int		get_code_size(t_map map, unsigned char *str);
 
+/**
+ * @brief 
+ * 
+ * @param map 
+ */
+void	destroy_map(t_map map);
+
 #endif

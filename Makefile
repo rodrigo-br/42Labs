@@ -8,21 +8,22 @@ OBJ_DIR = obj
 
 OBJ 	= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-
 CC		= cc
+
+FLAGS	= -g3 -Wall -Wextra -Werror
 
 VPATH	= $(DIRS)
 
 all: $(NAME)
 
 %.o:%.c
-	$(CC) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJ_DIR) $(OBJ)
-		$(CC) -o $@ $(OBJ)
+		$(CC) $(FLAGS) -o $@ $(OBJ)
 
 $(OBJ_DIR)/%.o: %.c Makefile | $(OBJ_DIR)
-		$(CC) -c $< -o $@
+		$(CC) $(FLAGS) -c $< -o $@
 
 $(OBJ_DIR):
 			mkdir -p $@
@@ -38,3 +39,6 @@ re:		fclean all
 push:
 		git push
 		git push github
+
+val:	re
+		valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)

@@ -14,7 +14,7 @@ unsigned char	*encode(t_map map, unsigned char *str)
 	encoded[size] = '\0';
 	while (str[i])
 	{
-		strcat(encoded, get_bit_code(map, str[i]));
+		strcat((char *)encoded, (char *)get_bit_code(map, str[i]));
 		i++;
 	}
 

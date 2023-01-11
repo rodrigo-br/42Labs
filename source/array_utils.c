@@ -72,7 +72,6 @@ void sort_array(t_node **aon, int n_of_symbols)
 
 void print_array(t_node **array_of_nodes, int n_of_symbols)
 {
-	int i = 0;
 	for (int i = 0; i < n_of_symbols; i++) {
 		printf("Node %d  -   char(DEC) = %3d  occurrences = %d\n", i + 1, array_of_nodes[i]->symbol, array_of_nodes[i]->occurrence);
 	}

@@ -39,7 +39,14 @@ void sort_array(t_node **array_of_nodes, int n_of_symbols);
  */
 t_list	*array_to_list(t_node **array_of_nodes, int n_of_symbols);
 
-
+/**
+ * @brief After the merged nodes, the array of nodes will have
+ * a duplicated node (the second one). To solve that, this function
+ * slide all the other nodes after that to the left, overrindg the
+ * duplicated value and "deleting" the remaining one;
+ * 
+ * @param array_of_nodes t_node **
+ */
 void slide_array_to_left(t_node **array_of_nodes);
 
 #endif

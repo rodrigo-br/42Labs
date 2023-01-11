@@ -7,7 +7,7 @@ void occurrence_table_init(int (*occurrence_table)[OT_SIZE])
 
 void count_occurrences(unsigned char *message, int (*occurrence_table)[OT_SIZE])
 {
-	int len_of_message = strlen(message);
+	int len_of_message = strlen((char *)message);
 
 	for (int i = 0; i < len_of_message; i++) {
 		(*occurrence_table)[message[i]]++;

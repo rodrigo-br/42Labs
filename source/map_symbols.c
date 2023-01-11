@@ -25,7 +25,7 @@ t_map	constroy_map(int height)
 	t_map map = (t_map)malloc(sizeof(unsigned char *) * (OT_SIZE + 1));
 	if (!map)
 		return (NULL);
-	for (int i = 0; i < (OT_SIZE + 1); i++) {
+	for (int i = 0; i < (OT_SIZE); i++) {
 		map[i] = (unsigned char *)calloc((height + 1), sizeof(unsigned char));
 		if (!map[i])
 			return (error_malloc_map(map, i), NULL);
@@ -40,13 +40,13 @@ void	fill_map(t_map map, t_node *tree, unsigned char *path_as_bits, int index)
 	unsigned char	right[index];
 
 	if (is_leaf(tree))
-		strcpy(map[tree->symbol], path_as_bits);
+		strcpy((char *)map[tree->symbol], (char *)path_as_bits);
 	else
 	{
-		strcpy(left, path_as_bits);
-		strcpy(right, path_as_bits);
-		strcat(left, "0");
-		strcat(right, "1");
+		strcpy((char *)left, (char *)path_as_bits);
+		strcpy((char *)right, (char *)path_as_bits);
+		strcat((char *)left, "0");
+		strcat((char *)right, "1");
 
 		fill_map(map, tree->left, left, index);
 		fill_map(map, tree->right, right, index);
@@ -56,7 +56,7 @@ void	fill_map(t_map map, t_node *tree, unsigned char *path_as_bits, int index)
 void	print_map(t_map map)
 {
 	for (int i = 0; i < OT_SIZE; i++) {
-		if (strlen(map[i]))
+		if (strlen((char *)map[i]))
 			printf("Char(DEC) = %3d  code = %s\n", i, map[i]);
 	}
 }
@@ -66,6 +66,19 @@ int		get_code_size(t_map map, unsigned char *str)
 	int size = 0;
 
 	for (int i = 0; str[i]; i++)
-		size += strlen(map[str[i]]);
+		size += strlen((char *)map[str[i]]);
 	return (size);
+}
+
+void	destroy_map(t_map map)
+{
+	int index = 0;
+
+	while (map[index])
+	{
+		free(map[index]);
+		index++;
+	}
+	free(map);
+	map = NULL;
 }

@@ -120,4 +120,29 @@ certeza de que estou conseguindo realizar todas as operações sem
 perdas de símbolos.
 
 Com o decode implementado, foi possível testar e ver que a decodificação não gerou prejuízos aos símbolos. Com isso, falta apenas alguns detalhes para acertar, de forma a permitir acentuações e caracteres especiais, acima de 127
-na tabela ASCII.
+na tabela ASCII. Porém, por conta do tempo disponível para fazer o projeto,
+resolvi avançar para a próxima fase e torcer para sobrar tempo de resolver
+esse problema depois.
+
+Edit.: Uma possível solução parece ter sido transformar os tipos de dado
+em unsigned char e declarar os símbolos como wchar_t (inteiro). Ainda
+com o assunto na cabeça.
+
+## Fase 4 - Compactando / Descompactando
+
+Para compactar o arquivo, é necessário transformar a string codificada em bits,
+visto que cada 0 e 1 da string é na verdade um char e ocupa 8 bits, atualmente
+a mensagem codificada está ocupando bem mais espaço que a original.
+
+Para simplificar as operações bitwise, resolvi pesquisar
+sobre macros, classes e conjuntos de operações
+relacionadas aos bits, de forma a melhorar o entendimento
+sobre o assunto. Nessa parte, minhas duas maiores fontes
+de pesquisa foram esse site: 
+![](https://c-faq.com/misc/bitsets.html)
+
+e o Livro que indiquei acima, que possui uma implementação
+de uma classe BitArray que utiliza uma outra classe traits
+BitContainer em C++, ao qual vou basear minhas operações,
+visto que preferi criar funções ao usar as macros do link
+acima.

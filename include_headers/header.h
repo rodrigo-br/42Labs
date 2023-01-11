@@ -5,7 +5,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <wchar.h>
-# include <locale.h>
 
 # define OT_SIZE 255
 
