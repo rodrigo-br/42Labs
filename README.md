@@ -146,3 +146,7 @@ de uma classe BitArray que utiliza uma outra classe traits
 BitContainer em C++, ao qual vou basear minhas operações,
 visto que preferi criar funções ao usar as macros do link
 acima.
+
+Novas referências foram adicionadas:
+![](https://youtu.be/aMAM5vL7wTs?t=639) (exatamente no minuto que marquei)
+![](https://www.youtube.com/watch?v=Ew2QnDeTCCE)

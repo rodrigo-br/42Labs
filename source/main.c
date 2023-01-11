@@ -20,14 +20,21 @@ static void	destroy_it_all(t_node *tree, t_map map, t_node **array);
  */
 static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n);
 
+/**
+ * @brief Simple function to print the coded message puting space every 8 chars
+ * to make it easier to read and count the bytes
+ * 
+ * @param str 
+ */
 void print_coded(unsigned char *str);
 
 int main (void)
 {
-	unsigned char	*str = (unsigned char *)strdup("cavalinho na chuva ao vento pegando frio");
+	unsigned char	*str = (unsigned char *)strdup("ção");
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
+	bits			bit_array;
 	t_map			map;
 
 
@@ -64,24 +71,10 @@ int main (void)
 	print_coded(encoded_message);
 	printf("Decoded msg = %s\n", decoded_message);
 
-
 	// Bit Array (Still testing)
-	unsigned char *bit_array = (unsigned char *)calloc(bit_len(strlen((char *)encoded_message)), sizeof(unsigned char));
-	for (size_t i = 0; i < strlen((char *)encoded_message); i++) {
-		if (encoded_message[i] == '1')
-			set_bit(bit_array, i);
-		else
-			bit_clear(bit_array, i);
-	}
-	for (size_t i = 0; i < strlen((char *)encoded_message); i++) {
-		if (bit_test(bit_array, i))
-			printf("1");
-		else
-			printf("0");
-		if (i % 8 == 7)
-			printf(" ");
-	}
-	printf("\n%ld\n", bit_len(strlen((char *)encoded_message)));
+	bit_array = constroy_bit_array(encoded_message);
+	printf("Bit Array = ");
+	bit_description(bit_array, strlen((char *)encoded_message));
 
 	// Free Memory
 	free(bit_array);
@@ -116,6 +109,7 @@ void print_coded(unsigned char *str)
 {
 	int	i = 0;
  
+	printf("Coded msg = ");
 	while (str[i])
 	{
 		printf("%c", str[i]);

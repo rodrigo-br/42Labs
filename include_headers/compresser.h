@@ -3,13 +3,23 @@
 
 # include "header.h"
 
+typedef unsigned char * bits;
+
+/**
+ * @brief Allocates a new bit_array and set all bits accordinaly to the message
+ * 
+ * @param msg unsigned char *
+ * @return unsigned char* Returns a new array of bits compressed
+ */
+bits	constroy_bit_array(unsigned char *msg);
+
 /**
  * @brief Set the bit of the bit_array at the position to 1
  * 
- * @param bit_array unsigned char *
+ * @param bit_array bits
  * @param position size_t
  */
-void	set_bit(unsigned char *bit_array, size_t position);
+void	set_bit(bits bit_array, size_t position);
 
 /**
  * @brief find the correct bit index
@@ -34,23 +44,31 @@ size_t	mask_bit(size_t position);
  * @param length 
  * @return size_t 
  */
-size_t	bit_len(size_t length);
+size_t	byte_len(size_t length);
 
 /**
  * @brief Set the bit of the bit_array at the position to 0
  * 
- * @param bit_array unsigned char *
+ * @param bit_array bits
  * @param position size_t
  */
-void	bit_clear(unsigned char *bit_array, size_t position);
+void	bit_clear(bits	bit_array, size_t position);
 
 /**
  * @brief Verify if the bit of the bit_array at the position is 1
  * 
- * @param bit_array unsigned char *
+ * @param bit_array bits
  * @param position size_t
  * @return short Returns 1 if the bit is 1, 0 otherwise
  */
-short	bit_test(unsigned char *bit_array, size_t position);
+short	bit_test(bits	bit_array, size_t position);
+
+/**
+ * @brief Auxiliar debug function that prints the bits of the bit_array
+ * 
+ * @param bit_array bits
+ * @param str_lenght size_t
+ */
+void bit_description(bits bit_array, size_t str_lenght);
 
 #endif

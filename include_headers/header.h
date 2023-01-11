@@ -6,6 +6,7 @@
 # include <stdio.h>
 # include <wchar.h>
 # include <limits.h>
+# include <unistd.h>
 
 # define OT_SIZE 255
 
