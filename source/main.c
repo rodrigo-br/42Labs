@@ -28,6 +28,8 @@ static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n);
  */
 void print_coded(unsigned char *str);
 
+#define FILE "testesh"
+
 int main (void)
 {
 	unsigned char	*str = (unsigned char *)strdup("cavalinho na chuva katchau");
@@ -52,10 +54,11 @@ int main (void)
 	// Huffman Tree
 	t_node *huffman_tree = create_tree(array_of_nodes, n_of_symbols);
 
+
 	// Map
 	map = constroy_map(get_height(huffman_tree));
 	fill_map(map, huffman_tree, (unsigned char *)"", get_height(huffman_tree));
-	
+
 
 	// Encode
 	unsigned char *encoded_message = encode(map, str);
@@ -66,23 +69,32 @@ int main (void)
 
 
 	// Debug
-	printf("Original msg = %s\n", str);
-	print_coded(encoded_message);
-	printf("Decoded msg = %s\n", decoded_message);
+	// printf("Original msg = %s\n", str);
+	// print_coded(encoded_message);
+	// printf("Decoded msg = %s\n", decoded_message);
 	// printf("tamanho da msg original = %ld\n", strlen((char *)str));
-	// printf("tamanho da mensagem codificada = %ld\n", strlen((char *)encoded_message));
+	//printf("tamanho da mensagem codificada = %ld\n", strlen((char *)encoded_message));
 
 
 	// Bit Array
 	data = constroy_bit_array(encoded_message);
-	printf("Bit Array = ");
+	// printf("Bit Array = ");
 	bit_description(data);
 	// printf("tamanho da msg comprimida = %ld\n", data.byte_len);
 
-	char block = attach_shm("testesh", 1, 0);
-	(void)block;
-
-	// Free Memory
+	unsigned char compressed[data.byte_len];
+	for (size_t i = 0; i < data.byte_len; i++) {
+		memset(compressed + i, data.bit_array[i], 1);
+	}
+	
+	
+	unsigned char decompressed[data.str_len];
+	for (size_t i = 0; i < data.str_len; i++) {
+		memset(decompressed + i, (bit_test(data.bit_array, i) ? '1' : '0'), 1);
+	}
+	print_coded(decompressed);
+	
+	//Free Memory
 	destroy_it_all(huffman_tree, map, array_of_nodes);
 	free(data.bit_array);
 	free(encoded_message);
@@ -115,7 +127,7 @@ void print_coded(unsigned char *str)
 {
 	int	i = 0;
  
-	printf("Coded msg = ");
+	// printf("Coded msg = ");
 	while (str[i])
 	{
 		printf("%c", str[i]);

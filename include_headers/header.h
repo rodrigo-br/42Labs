@@ -20,5 +20,6 @@
 # include "decoder.h"
 # include "compresser.h"
 # include "shm_operations.h"
+# include "bitwise.h"
 
 #endif
