@@ -46,6 +46,7 @@ Os itens a seguir não são obrigatórios, mas são funcionalidades que darão m
 <sub><sup>[Importante](https://xkcd.com/1381/)</sup></sub>
 </details>
 
+
 ## Fase 1 - Estudo
 
 A fim de compreender do que se trata o projeto, os desafios que irei
@@ -128,6 +129,7 @@ Edit.: Uma possível solução parece ter sido transformar os tipos de dado
 em unsigned char e declarar os símbolos como wchar_t (inteiro). Ainda
 com o assunto na cabeça.
 
+
 ## Fase 4 - Compactando / Descompactando
 
 Para compactar o arquivo, é necessário transformar a string codificada em bits,
@@ -152,3 +154,23 @@ Novas referências foram adicionadas:
 
 [YouTube link (continuação)](https://www.youtube.com/watch?v=Ew2QnDeTCCE)
 
+
+## Fase 5 - Compartilhando memória
+
+O santo graal do compartilhamento de memória foi esse vídeo:
+ [YouTube link](https://www.youtube.com/watch?v=WgVSq-sgHOc)
+
+O maior problema enfrentado aqui é compartilhar memória não dinamicamente
+alocada (através de malloc ou calloc). Para isso, comecei a repensar uma forma
+de declarar as variáveis utilizando variáveis com tamanho definido em runtime,
+também conhecidas como VLA (variable-length array). Para definir o tamanho
+de uma variável em tempo de execução, basta declarar ela utilizando uma outra
+variável para indicar seu tamanho. Exemplo : float fct(int n){float vals[n];(...)}
+
+Agora mais um desafio é definir a forma mais econômica, ou seja, enviando
+menos dados possíveis, de se decodificar a mensagem. Dessa forma saberei quais
+dados além do código comprimido precisam ser enviados ao decoder.
+
+Um outro ponto de atenção aqui é o que exatamente o decoder vai fazer e o que
+ele vai enviar de volta para o encoder fazer. Ainda estou definindo esses
+detalhes.

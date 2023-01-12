@@ -32,7 +32,7 @@ void print_coded(unsigned char *str);
 
 int main (void)
 {
-	unsigned char	*str = (unsigned char *)strdup("ca");
+	unsigned char	*str = (unsigned char *)strdup("cavalinho na chuva ao vento");
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
