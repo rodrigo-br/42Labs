@@ -28,11 +28,11 @@ static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n);
  */
 void print_coded(unsigned char *str);
 
-#define FILE "testesh"
+#define FILE "test_666"
 
 int main (void)
 {
-	unsigned char	*str = (unsigned char *)strdup("cavalinho na chuva katchau");
+	unsigned char	*str = (unsigned char *)strdup("ca");
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
@@ -73,7 +73,7 @@ int main (void)
 	// print_coded(encoded_message);
 	// printf("Decoded msg = %s\n", decoded_message);
 	// printf("tamanho da msg original = %ld\n", strlen((char *)str));
-	//printf("tamanho da mensagem codificada = %ld\n", strlen((char *)encoded_message));
+	// printf("tamanho da mensagem codificada = %ld\n", strlen((char *)encoded_message));
 
 
 	// Bit Array
@@ -82,17 +82,34 @@ int main (void)
 	bit_description(data);
 	// printf("tamanho da msg comprimida = %ld\n", data.byte_len);
 
-	unsigned char compressed[data.byte_len];
+	t_data_info *info = attach_memory_block_daniel(FILE, sizeof(t_data_info), 2);
+	info->byte_len = data.byte_len;
+	info->str_len = data.str_len;
+
+	char *compressed = attach_memory_block(FILE, (int)data.byte_len, 1);
 	for (size_t i = 0; i < data.byte_len; i++) {
 		memset(compressed + i, data.bit_array[i], 1);
 	}
-	
-	
-	unsigned char decompressed[data.str_len];
-	for (size_t i = 0; i < data.str_len; i++) {
-		memset(decompressed + i, (bit_test(data.bit_array, i) ? '1' : '0'), 1);
+
+
+	char c;
+	scanf("%c", &c);
+	if (c == 'd')
+	{
+		destroy_memory_block(FILE, 1);
+		destroy_memory_block(FILE, 2);
 	}
-	print_coded(decompressed);
+	
+	(void)compressed;
+	
+	detach_memory_block((void *)compressed);
+	detach_memory_block((void *)info);
+	
+	// unsigned char decompressed[data.str_len];
+	// for (size_t i = 0; i < data.str_len; i++) {
+	// 	memset(decompressed + i, (bit_test(data.bit_array, i) ? '1' : '0'), 1);
+	// }
+	// print_coded(decompressed);
 	
 	//Free Memory
 	destroy_it_all(huffman_tree, map, array_of_nodes);
@@ -112,6 +129,7 @@ static void	destroy_it_all(t_node *tree, t_map map, t_node **array)
 	free(array);
 }
 
+
 static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n)
 {
 	if (!array)
@@ -122,6 +140,7 @@ static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n)
 	sort_array(array, n);
 	return (EXIT_SUCCESS);
 }
+
 
 void print_coded(unsigned char *str)
 {

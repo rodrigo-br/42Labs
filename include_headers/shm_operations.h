@@ -3,11 +3,13 @@
 
 typedef struct s_data_info
 {
-	size_t	str_len;
-	size_t	byte_len;
+	unsigned short	str_len;
+	unsigned short	byte_len;
 } t_data_info;
 
-char			*attach_str_shm(char *file, int size);
-t_data_info		*attach_info_shm(char *file, int size);
+short		destroy_memory_block(char *file, int segment);
+short		detach_memory_block(void *block);
+char		*attach_memory_block(char *file, int size, int segment);
+t_data_info *attach_memory_block_daniel(char *file, int size, int segment);
 
 #endif
