@@ -49,3 +49,54 @@ short destroy_memory_block(char *file, int segment)
 		return (printf("38"), 0);
 	return (shmctl(shared_block_id, IPC_RMID, NULL) != ERROR);
 }
+
+int calculate_size(t_map map, int n_of_symbols)
+{
+	int size = 0;
+
+	for (int i = 0; i < OT_SIZE; i++)
+	{
+		size += strlen((char *)map[i]);
+	}
+	size += (n_of_symbols) + 1;
+	return (size);
+}
+
+void	put_map_in_daniel(char **daniel, t_map map)
+{
+	int index = 0;
+
+	while (map[index])
+	{
+		if (strlen((char *)map[index]))
+		{
+			strcat(*daniel, (char *)map[index]);
+			strcat(*daniel, " ");
+		}
+		index++;
+	}
+	strcat(*daniel, " ");
+}
+
+void	put_symbols_in_daniel(char **daniel, int (occurrence_table)[OT_SIZE])
+{
+	int i = 0;
+	
+	while (i < OT_SIZE)
+	{
+		if (occurrence_table[i])
+		{
+			char str_convert[2];
+			str_convert[0] = i;
+			str_convert[1] = '\0';
+			strcat(*daniel, str_convert);
+		}
+		i++;
+	}
+}
+
+void	put_things_in_daniel(char **daniel, t_map map, int (occurrence_table)[OT_SIZE])
+{
+	put_map_in_daniel(daniel, map);
+	put_symbols_in_daniel(daniel, occurrence_table);
+}

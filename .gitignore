@@ -3,3 +3,5 @@ cavalinho
 *.o
 leaks
 log
+decoder_program
+encoder_program

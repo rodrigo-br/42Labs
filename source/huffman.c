@@ -30,7 +30,6 @@ t_node	*create_tree(t_node **nodes, int size)
 		size--;
 		sort_array(nodes, size);
 	}
-
 	return (nodes[0]);
 }
 

@@ -24,7 +24,7 @@ static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n);
  * @brief Simple function to print the coded message puting space every 8 chars
  * to make it easier to read and count the bytes
  * 
- * @param str 
+ * @param str unsigned char *
  */
 void print_coded(unsigned char *str);
 
@@ -32,7 +32,16 @@ void print_coded(unsigned char *str);
 
 int main (void)
 {
-	unsigned char	*str = (unsigned char *)strdup("cavalinho na chuva ao vento");
+	char c;
+	printf("(Enter) continue\n(d) destroy memory\n");
+	scanf("%c", &c);
+	if (c == 'd')
+	{
+		destroy_memory_block(FILE, 1);
+		destroy_memory_block(FILE, 2);
+		destroy_memory_block(FILE, 3);
+	}
+	unsigned char	*str = (unsigned char *)strdup("cavalinho");
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
@@ -40,9 +49,14 @@ int main (void)
 	t_map			map;
 
 
+// c(1)      v(1)       l(1)       i(1)      n(1)      h(1)     o(1)       a(2)
+// nó    	 nó      	nó      	 nó       nó      nó    	nó    		nó
+
 	// Ocurrence Table
 	count_occurrences(str, &occurrence_table);
 	n_of_symbols = get_n_of_symbols(occurrence_table);
+	if (n_of_symbols < 2)
+		return (printf("[BUG] Issue #1"), EXIT_FAILURE);
 
 
 	// Array of nodes
@@ -58,6 +72,7 @@ int main (void)
 	// Map
 	map = constroy_map(get_height(huffman_tree));
 	fill_map(map, huffman_tree, (unsigned char *)"", get_height(huffman_tree));
+	print_map(map);
 
 
 	// Encode
@@ -67,7 +82,10 @@ int main (void)
 	// Decode
 	unsigned char *decoded_message = decode(huffman_tree, encoded_message);
 
-
+//caval
+//11001110 10000000
+//c = 8 bits
+//ca
 	// Debug
 	// printf("Original msg = %s\n", str);
 	// print_coded(encoded_message);
@@ -78,40 +96,52 @@ int main (void)
 
 	// Bit Array
 	data = constroy_bit_array(encoded_message);
-	// printf("Bit Array = ");
-	bit_description(data);
+	// bit_description(data);
 	// printf("tamanho da msg comprimida = %ld\n", data.byte_len);
 
+
+	// Share Memory
+		//still testing
+	int size_of_daniel = calculate_size(map, n_of_symbols);
+	char *daniel = attach_memory_block(FILE, size_of_daniel, 3);
+	put_things_in_daniel(&daniel, map, occurrence_table);
+	printf("%s\n", daniel);
+
+		//already working
 	t_data_info *info = attach_memory_block_daniel(FILE, sizeof(t_data_info), 2);
 	info->byte_len = data.byte_len;
 	info->str_len = data.str_len;
-
 	char *compressed = attach_memory_block(FILE, (int)data.byte_len, 1);
 	for (size_t i = 0; i < data.byte_len; i++) {
 		memset(compressed + i, data.bit_array[i], 1);
 	}
+	(void)compressed;
 
 
-	char c;
-	scanf("%c", &c);
-	if (c == 'd')
+	// Detach Memory
+	detach_memory_block((void *)compressed);
+	detach_memory_block((void *)info);
+	detach_memory_block((void *)daniel);
+
+
+	// Destroy Memory
+	char d;
+	printf("(Enter) continue\n(d) destroy memory\n");
+	scanf("%c", &d);
+	if (d == 'd')
 	{
 		destroy_memory_block(FILE, 1);
 		destroy_memory_block(FILE, 2);
+		destroy_memory_block(FILE, 3);
 	}
-	
-	(void)compressed;
-	
-	detach_memory_block((void *)compressed);
-	detach_memory_block((void *)info);
-	
 	// unsigned char decompressed[data.str_len];
 	// for (size_t i = 0; i < data.str_len; i++) {
 	// 	memset(decompressed + i, (bit_test(data.bit_array, i) ? '1' : '0'), 1);
 	// }
 	// print_coded(decompressed);
-	
-	//Free Memory
+
+
+	// Free Memory
 	destroy_it_all(huffman_tree, map, array_of_nodes);
 	free(data.bit_array);
 	free(encoded_message);

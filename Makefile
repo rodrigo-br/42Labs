@@ -1,44 +1,47 @@
-NAME	= cavalinho
+NAME_ENCODER	= encoder_program
 
-DIRS	= obj, include_headers, source
+SRC_ENCODER	=	array_utils.c bitwise.c compresser.c decoder.c encoder.c huffman.c \
+				map_symbols.c occurrence_table.c shm_operations.c
 
-SRC		= $(shell ls source/ | grep .c$)
+MAIN_ENCODER = main.c
 
-OBJ_DIR = obj
+OBJ_ENCODER	=	$(addprefix source/, $(SRC_ENCODER:.c=.o))
+OBJ_ENCODER +=	$(addprefix source/, $(MAIN_ENCODER:.c=.o))
 
-OBJ 	= $(SRC:%.c=$(OBJ_DIR)/%.o)
+NAME_DECODER	= decoder_program
 
-CC		= cc
+SRC_DECODER	=	main_decoder.c
 
-FLAGS	= -g3 -Wall -Wextra -Werror
+OBJ_DECODER	=	$(addprefix decoder/, $(SRC_DECODER:.c=.o))
+OBJ_DECODER +=	$(addprefix source/, $(SRC_ENCODER:.c=.o))
 
-VPATH	= $(DIRS)
+CCFLAGS	= -Wall -Wextra -Werror
 
-all: $(NAME)
+RM	=	rm -f
 
-%.o:%.c
-	$(CC) $(FLAGS) -c $< -o $@
+all:	$(NAME_ENCODER)	$(NAME_DECODER) clean
 
-$(NAME): $(OBJ_DIR) $(OBJ)
-		$(CC) $(FLAGS) -o $@ $(OBJ)
+.c.o:
+	cc $(CCFLAGS) -c $< -o $(<:.c=.o)	
 
-$(OBJ_DIR)/%.o: %.c Makefile | $(OBJ_DIR)
-		$(CC) $(FLAGS) -c $< -o $@
+$(NAME_ENCODER): $(OBJ_ENCODER) $(HEADER)
+	cc $(CCFLAGS) -o $(NAME_ENCODER) $(OBJ_ENCODER)
 
-$(OBJ_DIR):
-			mkdir -p $@
+$(NAME_DECODER): $(OBJ_DECODER) $(HEADER)
+	cc $(CCFLAGS) -o $(NAME_DECODER) $(OBJ_DECODER)
 
 clean:
-		rm -rf $(OBJ)
+	$(RM) $(OBJ_ENCODER)
+	$(RM) $(OBJ_DECODER)
 
 fclean: clean
-		rm -rf $(NAME)
+	$(RM) $(NAME_ENCODER)
+	$(RM) $(NAME_DECODER)
 
-re:		fclean all
+re: fclean all
 
 push:
 		git push
 		git push github
 
-val:	re
-		valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="leaks" ./$(NAME) 1> log
+.PHONY: all clean fclean re
