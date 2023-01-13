@@ -15,7 +15,7 @@ unsigned char	*decode(t_node *tree, unsigned char *coded_msg)
 		if (is_leaf(aux))
 		{
 			str_convert[0] = aux->symbol;
-			strcat((char *)decoded_msg, (char *)str_convert);
+			ft_ustrcat(decoded_msg, str_convert);
 			aux = tree;
 		}
 		i++;	

@@ -22,7 +22,7 @@ static void error_malloc_map(t_map map, int position)
 
 t_map	constroy_map(int height)
 {
-	t_map map = (t_map)malloc(sizeof(unsigned char *) * (OT_SIZE + 1));
+	t_map map = (t_map)calloc((OT_SIZE + 1), sizeof(unsigned char *));
 	if (!map)
 		return (NULL);
 	for (int i = 0; i < (OT_SIZE); i++) {
@@ -30,7 +30,6 @@ t_map	constroy_map(int height)
 		if (!map[i])
 			return (error_malloc_map(map, i), NULL);
 	}
-	map[255] = NULL;
 	return (map);
 }
 
@@ -45,8 +44,8 @@ void	fill_map(t_map map, t_node *tree, unsigned char *path_as_bits, int index)
 	{
 		strcpy((char *)left, (char *)path_as_bits);
 		strcpy((char *)right, (char *)path_as_bits);
-		strcat((char *)left, "0");
-		strcat((char *)right, "1");
+		ft_ustrcat(left, (unsigned char *)"0");
+		ft_ustrcat(right, (unsigned char *)"1");
 
 		fill_map(map, tree->left, left, index);
 		fill_map(map, tree->right, right, index);

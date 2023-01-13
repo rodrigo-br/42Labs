@@ -27,9 +27,9 @@ int get_n_of_symbols(int *occurrence_table)
 
 void print_occurrence_table(int *occurrence_table)
 {
-	for (int i = 0; i < OT_SIZE; i++) {
+	for (unsigned char i = 0; i < (unsigned char)(OT_SIZE - 1); i++) {
 		if (occurrence_table[i] != 0)
-			printf("char(DEC) = %3d  occurences = %d\n", i, occurrence_table[i]);
+			printf("char(ASCI) = %c  char(DEC) = %3d  occurences = %d\n", i, i, occurrence_table[i]);
 	}
 	printf("Total number of symbols: %d\n", get_n_of_symbols(occurrence_table));
 }

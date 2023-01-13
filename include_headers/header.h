@@ -9,8 +9,10 @@
 # include <unistd.h> // write
 # include <sys/ipc.h> // ftok
 # include <sys/shm.h> // shm
+# include <locale.h> // setlocale
 
-# define OT_SIZE 255
+# define OT_SIZE 256
+# define FILE "test_666"
 
 # include "occurrence_table.h"
 # include "array_utils.h"
