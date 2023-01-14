@@ -3,8 +3,8 @@
 
 typedef struct s_data_info
 {
-	unsigned short	str_len;
-	unsigned short	byte_len;
+	size_t	str_len;
+	size_t	byte_len;
 } t_data_info;
 
 /**

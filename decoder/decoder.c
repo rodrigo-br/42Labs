@@ -1,10 +1,10 @@
 #include "../include_headers/header.h"
 
-static unsigned char *find_symbol(t_daniel *daniel_body, unsigned char *decompressed, short int *i)
+static unsigned char *find_symbol(t_daniel *daniel_body, unsigned char *decompressed, size_t *i)
 {
 	unsigned char symbol[2];
 	bzero(symbol, sizeof(symbol));
-	short index = 0;
+	size_t index = 0;
 	while (daniel_body->symbols[index])
 	{
 		if (!strncmp((char *)daniel_body->map[daniel_body->symbols[index]], (char *)decompressed, strlen((char *)daniel_body->map[daniel_body->symbols[index]])))
@@ -18,11 +18,11 @@ static unsigned char *find_symbol(t_daniel *daniel_body, unsigned char *decompre
 	return (NULL);
 }
 
-unsigned char *decode_msg(t_daniel *daniel_body, unsigned char *decompressed, short len)
+unsigned char *decode_msg(t_daniel *daniel_body, unsigned char *decompressed, size_t len)
 {
 	unsigned char *decoded;
 	unsigned char *symbol;
-	short i;
+	size_t i;
 
 	decoded = (unsigned char *)calloc(len + 1, sizeof(unsigned char));
 	while (*decompressed) {

@@ -8,7 +8,7 @@ unsigned char *decompress(unsigned char *compressed, t_data_info *info)
 	if (!decompressed)
 		return (NULL);
 	
-	for (short i = 0; i < info->str_len; i++) {
+	for (size_t i = 0; i < info->str_len; i++) {
 		if (bit_test(compressed, i))
 			memset(decompressed + i, '1', 1);
 		else

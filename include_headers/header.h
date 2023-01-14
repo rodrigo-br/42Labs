@@ -10,6 +10,7 @@
 # include <sys/ipc.h> // ftok
 # include <sys/shm.h> // shm
 # include <locale.h> // setlocale
+# include <fcntl.h> // open
 
 # define OT_SIZE 256
 # define FILE "test_666"
@@ -25,5 +26,6 @@
 # include "danielgorithm.h"
 # include "decompresser.h"
 # include "decoder.h"
+# include "reader.h"
 
 #endif

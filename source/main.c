@@ -25,7 +25,7 @@ int main (void)
 {
 	setlocale(LC_ALL, "utf8");
 	ask_for_delete_shm();
-	unsigned char	*str = (unsigned char *)strdup("🦙ção paolo é um gajo muito fixe🦙");
+	unsigned char	*str = (unsigned char *)strdup("🦙🦙");
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
@@ -80,7 +80,7 @@ int main (void)
 	t_data_info *info = (t_data_info *)attach_memory_block(FILE, sizeof(t_data_info), 2);
 	info->byte_len = data.byte_len;
 	info->str_len = data.str_len;
-	printf("%d %d\n", info->byte_len, info->str_len);
+	printf("%ld %ld\n", info->byte_len, info->str_len);
 
 		//already working
 	unsigned char *compressed = (unsigned char *)attach_memory_block(FILE, (int)data.byte_len, 1);
@@ -98,13 +98,6 @@ int main (void)
 
 	// Destroy Memory
 	ask_for_delete_shm();
-
-	
-	// unsigned char decompressed[data.str_len];
-	// for (size_t i = 0; i < data.str_len; i++) {
-	// 	memset(decompressed + i, (bit_test(data.bit_array, i) ? '1' : '0'), 1);
-	// }
-	// print_coded(decompressed);
 
 
 	// Free Memory
