@@ -1,10 +1,5 @@
 #include "../include_headers/header.h"
 
-void occurrence_table_init(int (*occurrence_table)[OT_SIZE])
-{
-	bzero(*occurrence_table, sizeof(*occurrence_table));
-}
-
 void count_occurrences(unsigned char *message, int (*occurrence_table)[OT_SIZE])
 {
 	int len_of_message = strlen((char *)message);
@@ -33,4 +28,3 @@ void print_occurrence_table(int *occurrence_table)
 	}
 	printf("Total number of symbols: %d\n", get_n_of_symbols(occurrence_table));
 }
-

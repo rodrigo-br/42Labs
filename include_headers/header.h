@@ -23,5 +23,6 @@
 # include "compresser.h"
 # include "shm_operations.h"
 # include "bitwise.h"
+# include "danielgorithm.h"
 
 #endif

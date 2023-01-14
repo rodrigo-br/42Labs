@@ -105,7 +105,7 @@ Agora que tenho a estrutura da árvore montada, só criar algumas funções para
 
 ### 2.2 Map
 
-Próxima estrutura a ser criada é um mapa dos symbolos e seus
+Próxima estrutura a ser criada é um mapa dos símbolos e seus
 respectivos códigos. Como em uma árvore, os percursos da raiz para qualquer uma das *folhas* (Nós onde os dois descendentes, left e right, são nulos) são únicos, a codificação e a descodificação dos códigos têm sempre uma árvore associada.
 
 
@@ -174,3 +174,19 @@ dados além do código comprimido precisam ser enviados ao decoder.
 Um outro ponto de atenção aqui é o que exatamente o decoder vai fazer e o que
 ele vai enviar de volta para o encoder fazer. Ainda estou definindo esses
 detalhes.
+
+
+## Fase 6 - Aplicar a fase 3 e 4 no novo programa
+
+Finalmente foi criado o segundo programa, com sua própria main e seu próprio
+arquivo executável e agora o desafio é aplicar a descompressão e decodificação
+da mensagem com o mínimo de informação que eu conseguir.
+
+Aqui, minha maior referência acabou sendo uma proposta de solução de um colega
+em que resolvi tentar aplicar da minha maneira.
+
+Também preciso pensar em maneiras de proteger as variáveis compartilhadas
+de problemas como data race e data corruption, e, talvez, por último, 
+preparar os dados que serão enviados de volta para o encoder para que ele
+possa exibir as informações.
+

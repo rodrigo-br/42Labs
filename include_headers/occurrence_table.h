@@ -4,13 +4,6 @@
 # include "header.h"
 
 /**
- * @brief Initialize the occurrence table with 0 
- *  
- * @param occurrence_table a reference to the occurrence table
- */
-void	occurrence_table_init(int (*occurrence_table)[OT_SIZE]);
-
-/**
  * @brief add the number of occurrences of each character in the message
  * by accessing the index of occurrence_table related to the symbol of the
  * message.
