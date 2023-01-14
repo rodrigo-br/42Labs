@@ -47,6 +47,15 @@ Os itens a seguir não são obrigatórios, mas são funcionalidades que darão m
 </details>
 
 
+# Sumário
+
+* [Fase 1 - Estudo](#fase-1---estudo)
+* [Fase 2 - Construção das principais estruturas de dados](#fase-2---construção-das-principais-estruturas-de-dados)
+* [Fase 3 - Entendendo Encode / Decode](#fase-3---encode--decode)
+* [Fase 4 - Compactando / Descompactando](#fase-4---compactando--descompactando)
+* [Fase 5 - Compartilhando memória](#fase-5---compartilhando-memória)
+* [Fase 6 - Aplicando Fase 3 e 4 no novo programa](#fase-6---aplicar-a-fase-3-e-4-no-novo-programa)
+
 ## Fase 1 - Estudo
 
 A fim de compreender do que se trata o projeto, os desafios que irei
@@ -109,7 +118,7 @@ Próxima estrutura a ser criada é um mapa dos símbolos e seus
 respectivos códigos. Como em uma árvore, os percursos da raiz para qualquer uma das *folhas* (Nós onde os dois descendentes, left e right, são nulos) são únicos, a codificação e a descodificação dos códigos têm sempre uma árvore associada.
 
 
-## Fase 3 - Encode / Decode
+## Fase 3 - Entendendo Encode / Decode
 
 A parte inicial da fase de compressão, consiste em criar uma
 representação em string do que eu pretendo que seja o novo
