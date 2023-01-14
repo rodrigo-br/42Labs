@@ -219,4 +219,4 @@ Faltando apenas 1 dia para entrega do projeto, será necessário garantir que o 
 - Refatorar as funções para melhorar legibilidade
 - Verificar documentação de todas as funções
 
-![](capybara.svg)
+![Untitled_design_1](https://user-images.githubusercontent.com/72653838/212486183-f824aaae-4fb1-459b-b757-2757c6270ff9.png)
