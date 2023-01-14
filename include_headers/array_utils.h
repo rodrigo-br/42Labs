@@ -4,6 +4,14 @@
 # include "huffman.h"
 
 /**
+ * @brief Allocate a new t_node ** and fill it with the nodes
+ * 
+ * @param n_of_symbols int
+ * @return t_node** 
+ */
+t_node **create_array(int n_of_symbols, int *occurrence_table);
+
+/**
  * @brief create nodes from the occurrence table and fill the array of
  * nodes with it.
  * 

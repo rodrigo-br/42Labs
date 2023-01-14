@@ -209,14 +209,20 @@ Faltando apenas 1 dia para entrega do projeto, será necessário garantir que o 
 	- Parsear informações
 	- Abrir arquivos
 	- Retornar o texto em uma única string
+
 - Detail
 	- Organizar informação para enviar para o encoder
 	- Printar informação organizada no encoder
+
 - Clear Memory
 	- Novo Programa/função que libera toda a memória compartilhada dos pelos programas anteriores
+
 - Help
 	- Criar um "como usar" e uma flag de help que exibe o "como usar" através do terminal
+
 - Refatorar as funções para melhorar legibilidade
+
 - Verificar documentação de todas as funções
+
 
 ![Untitled_design_1](https://user-images.githubusercontent.com/72653838/212486183-f824aaae-4fb1-459b-b757-2757c6270ff9.png)

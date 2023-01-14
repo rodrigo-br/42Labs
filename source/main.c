@@ -9,17 +9,6 @@
  */
 static void	destroy_it_all(t_node *tree, t_map map, t_node **array);
 
-/**
- * @brief	Fill the array of nodes with the symbols and their occurrences,
- * and sort it by the occurrences.
- * 
- * @param array array_of_nodes
- * @param ot occurrence_table
- * @param n n_of_symbols
- * @return short 0 if success and 1 if failure on mallocs
- */
-static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n);
-
 
 int main (void)
 {
@@ -41,9 +30,7 @@ int main (void)
 
 
 	// Array of nodes
-	array_of_nodes = (t_node **)malloc(sizeof(t_node *) * (n_of_symbols + 1));
-	if (populate_and_sort_array(array_of_nodes, occurrence_table, n_of_symbols))
-		return (EXIT_FAILURE);
+	array_of_nodes = create_array(n_of_symbols, occurrence_table);
 
 
 	// Huffman Tree
@@ -117,14 +104,3 @@ static void	destroy_it_all(t_node *tree, t_map map, t_node **array)
 	free(array);
 }
 
-
-static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n)
-{
-	if (!array)
-		return (EXIT_FAILURE);
-	fill_array(array, ot);
-	if (!array)
-		return (EXIT_FAILURE);
-	sort_array(array, n);
-	return (EXIT_SUCCESS);
-}

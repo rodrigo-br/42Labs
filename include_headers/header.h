@@ -1,19 +1,19 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-# include <string.h> // strcat
-# include <stdlib.h> // malloc
-# include <stdio.h> // printf
-# include <wchar.h> // wchar_t
-# include <limits.h> // CHAR_BIT
-# include <unistd.h> // write
-# include <sys/ipc.h> // ftok
-# include <sys/shm.h> // shm
-# include <locale.h> // setlocale
-# include <fcntl.h> // open
+# include <string.h>	// strcat
+# include <stdlib.h>	// malloc
+# include <stdio.h>		// printf
+# include <wchar.h>		// wchar_t
+# include <limits.h>	// CHAR_BIT
+# include <unistd.h>	// write
+# include <sys/ipc.h>	// ftok
+# include <sys/shm.h>	// shm
+# include <locale.h>	// setlocale
+# include <fcntl.h>		// open
 
 # define OT_SIZE 256
-# define FILE "test_666"
+# define FILE "capybara.svg"
 
 # include "occurrence_table.h"
 # include "array_utils.h"

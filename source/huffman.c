@@ -23,6 +23,7 @@ t_node	*merge_nodes(t_node *n1, t_node *n2)
 
 t_node	*create_tree(t_node **nodes, int size)
 {
+	sort_array(nodes, size);
 	while (nodes[1])
 	{
 		nodes[0] = merge_nodes(nodes[0], nodes[1]);

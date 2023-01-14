@@ -20,6 +20,18 @@ static void error_malloc_array_of_nodes(t_node **array_of_nodes, int position)
 	array_of_nodes = NULL;
 }
 
+t_node **create_array(int n_of_symbols, int *occurrence_table)
+{
+	t_node **array_of_nodes = (t_node **)calloc((n_of_symbols + 1), sizeof(t_node *));
+
+	if (!array_of_nodes)
+		return (NULL);
+	fill_array(array_of_nodes, occurrence_table);
+	if (!array_of_nodes)
+		return (NULL);
+	return (array_of_nodes);
+}
+
 void fill_array(t_node **array_of_nodes, int *occurrence_table)
 {
 	int position = 0;
