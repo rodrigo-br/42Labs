@@ -19,6 +19,7 @@ static void	fill_symbols(unsigned char **symbols, unsigned char *daniel, int spo
 	}
 }
 
+// Very dangerous. Do not touch it.
 static void split_code_into_map(unsigned char *code, unsigned char **map, unsigned char *symbols)
 {
 	unsigned char mapped_code[8];

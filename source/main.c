@@ -20,15 +20,6 @@ static void	destroy_it_all(t_node *tree, t_map map, t_node **array);
  */
 static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n);
 
-/**
- * @brief Simple function to print the coded message puting space every 8 chars
- * to make it easier to read and count the bytes
- * 
- * @param str unsigned char *
- */
-void print_coded(unsigned char *str);
-
-
 
 int main (void)
 {
@@ -70,7 +61,6 @@ int main (void)
 
 	// Decode
 	unsigned char *decoded_message = decode(huffman_tree, encoded_message);
-	printf("decoded_message = %s\n", decoded_message);
 
 
 	// Debug
@@ -152,20 +142,4 @@ static short populate_and_sort_array(t_node **array, int ot[OT_SIZE], int n)
 		return (EXIT_FAILURE);
 	sort_array(array, n);
 	return (EXIT_SUCCESS);
-}
-
-
-void print_coded(unsigned char *str)
-{
-	int	i = 0;
- 
-	// printf("Coded msg = ");
-	while (str[i])
-	{
-		printf("%c", str[i]);
-		if (i % 8 == 7)
-			printf(" ");
-		i++;
-	}
-	printf("\n");
 }

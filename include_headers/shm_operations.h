@@ -70,5 +70,13 @@ void	ft_ustrcat(unsigned char *dst, unsigned char *src);
  */
 void	ask_for_delete_shm(void);
 
+/**
+ * @brief Simple function to print the coded message puting space every 8 chars
+ * to make it easier to read and count the bytes
+ * 
+ * @param str unsigned char *
+ */
+void print_coded(unsigned char *str);
+
 
 #endif

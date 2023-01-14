@@ -10,12 +10,12 @@ OBJ_ENCODER +=	$(addprefix source/, $(MAIN_ENCODER:.c=.o))
 
 NAME_DECODER	= decoder_program
 
-SRC_DECODER	=	main_decoder.c danielgorithm.c
+SRC_DECODER	=	main_decoder.c danielgorithm.c decompresser.c
 
 OBJ_DECODER	=	$(addprefix decoder/, $(SRC_DECODER:.c=.o))
 OBJ_DECODER +=	$(addprefix source/, $(SRC_ENCODER:.c=.o))
 
-CCFLAGS	= -Wall -Wextra -Werror
+CCFLAGS	= -g3 -Wall -Wextra -Werror
 
 RM	=	rm -f
 

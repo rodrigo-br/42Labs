@@ -3,19 +3,6 @@
 t_bit_array constroy_bit_array(unsigned char *msg)
 {
 	t_bit_array	data;
-//11001110 10
-
-
-//bitarray[2]
-//bitarray[0] = 11001110
-//bitarray[1] = 10------
-
-
-//11001110
-//00000000
-
-//11001110
-//char c =
 
 	data.str_len = strlen((char *)msg);
 	data.byte_len = byte_len(data.str_len);

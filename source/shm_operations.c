@@ -125,3 +125,18 @@ void	ask_for_delete_shm(void)
 		destroy_memory_block(FILE, 3);
 	}
 }
+
+void print_coded(unsigned char *str)
+{
+	int	i = 0;
+ 
+	// printf("Coded msg = ");
+	while (str[i])
+	{
+		printf("%c", str[i]);
+		if (i % 8 == 7)
+			printf(" ");
+		i++;
+	}
+	printf("\n");
+}
