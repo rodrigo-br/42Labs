@@ -19,11 +19,11 @@
 # include "huffman.h"
 # include "map_symbols.h"
 # include "encoder.h"
-# include "decoder.h"
 # include "compresser.h"
 # include "shm_operations.h"
 # include "bitwise.h"
 # include "danielgorithm.h"
 # include "decompresser.h"
+# include "decoder.h"
 
 #endif

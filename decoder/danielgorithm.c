@@ -9,7 +9,7 @@ static void	fill_symbols(unsigned char **symbols, unsigned char *daniel, int spo
 {
 	int i = 0;
 
-	*symbols = (unsigned char *)calloc(8, sizeof(unsigned char));
+	*symbols = (unsigned char *)calloc(strlen((char *)&daniel[spot + 2]), sizeof(unsigned char));
 	spot += 2;
 	while (daniel[spot])
 	{

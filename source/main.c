@@ -25,7 +25,7 @@ int main (void)
 {
 	setlocale(LC_ALL, "utf8");
 	ask_for_delete_shm();
-	unsigned char	*str = (unsigned char *)strdup("🦙ção paolo é um gajo muito fixe");
+	unsigned char	*str = (unsigned char *)strdup("🦙ção paolo é um gajo muito fixe🦙");
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
 	int				n_of_symbols;
@@ -59,14 +59,7 @@ int main (void)
 	unsigned char *encoded_message = encode(map, str);
 
 
-	// Decode
-	unsigned char *decoded_message = decode(huffman_tree, encoded_message);
-
-
 	// Debug
-	// printf("Original msg = %s\n", str);
-	// print_coded(encoded_message);
-	// printf("Decoded msg = %s\n", decoded_message);
 	// printf("tamanho da msg original = %ld\n", strlen((char *)str));
 	// printf("tamanho da mensagem codificada = %ld\n", strlen((char *)encoded_message));
 
@@ -118,7 +111,6 @@ int main (void)
 	destroy_it_all(huffman_tree, map, array_of_nodes);
 	free(data.bit_array);
 	free(encoded_message);
-	free(decoded_message);
 	free(str);
 
 	return (EXIT_SUCCESS);
