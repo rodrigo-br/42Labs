@@ -218,3 +218,5 @@ Faltando apenas 1 dia para entrega do projeto, será necessário garantir que o 
 	- Criar um "como usar" e uma flag de help que exibe o "como usar" através do terminal
 - Refatorar as funções para melhorar legibilidade
 - Verificar documentação de todas as funções
+
+![](capybara.svg)
