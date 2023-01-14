@@ -22,6 +22,8 @@ static void error_malloc_map(t_map map, int position)
 
 t_map	constroy_map(int height)
 {
+	if (!height)
+		height = 1;
 	t_map map = (t_map)calloc((OT_SIZE + 1), sizeof(unsigned char *));
 	if (!map)
 		return (NULL);

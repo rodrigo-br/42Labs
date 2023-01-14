@@ -30,6 +30,7 @@ unsigned char *decode_msg(t_daniel *daniel_body, unsigned char *decompressed, si
 		while (!(symbol = find_symbol(daniel_body, decompressed, &i)))
 			i++;
 		ft_ustrcat(decoded, symbol);
+		free(symbol);
 		decompressed += i;
 		
 	}

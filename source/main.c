@@ -9,9 +9,17 @@
  */
 static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data);
 
+/**
+ * @brief check argc and print usage if necessary
+ * 
+ * @return short returns 1 if theres an error and 0 otherwise
+ */
+short error(int argc);
 
 int main (int argc, char **argv)
 {
+	if (error(argc))
+		return (EXIT_FAILURE);
 	setlocale(LC_ALL, "utf8");
 	ask_for_delete_shm();
 	unsigned char	*str = handle_input(argc, argv);
@@ -24,8 +32,6 @@ int main (int argc, char **argv)
 	// Ocurrence Table
 	count_occurrences(str, &occurrence_table);
 	int n_of_symbols = get_n_of_symbols(occurrence_table);
-	if (n_of_symbols < 2)
-		return (printf("[BUG] Issue #1"), EXIT_FAILURE);
 
 
 	// Array of nodes
@@ -39,7 +45,8 @@ int main (int argc, char **argv)
 	// Map
 	map = constroy_map(get_height(huffman_tree));
 	fill_map(map, huffman_tree, (unsigned char *)"", get_height(huffman_tree));
-
+	if (n_of_symbols == 1)
+		strcpy((char *)map[array_of_nodes[0]->symbol], "0");
 
 	// Encode
 	unsigned char *encoded_message = encode(map, str);
@@ -103,3 +110,13 @@ static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array 
 	free(array);
 }
 
+short error(int argc)
+{
+	if (argc >= 2)
+		return (EXIT_SUCCESS);
+
+	printf("Usage: \n./encoder_program [file] \
+			\npress d, enter, any other lether and enter. \
+			\n./decoder_program\n");
+	return (EXIT_FAILURE);
+}
