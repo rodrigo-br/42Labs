@@ -13,12 +13,19 @@ typedef struct s_bit_array
 }	t_bit_array;
 
 /**
+ * @brief Free allocated t_bit_array and its bit_array (bits)
+ * 
+ * @param data pointer to bit array
+ */
+void destroy_bit_array(t_bit_array *data);
+
+/**
  * @brief Allocates a new bit_array and set all bits accordinaly to the message
  * 
  * @param msg unsigned char *
  * @return unsigned char* Returns a new array of bits compressed
  */
-t_bit_array constroy_bit_array(unsigned char *msg);
+t_bit_array *constroy_bit_array(unsigned char *msg);
 
 /**
  * @brief Set the bit of the bit_array at the position to 1

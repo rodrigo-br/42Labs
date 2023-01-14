@@ -130,7 +130,7 @@ void print_coded(unsigned char *str)
 {
 	int	i = 0;
  
-	// printf("Coded msg = ");
+	printf("Coded msg = ");
 	while (str[i])
 	{
 		printf("%c", str[i]);

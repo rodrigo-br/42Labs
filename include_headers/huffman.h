@@ -3,7 +3,6 @@
 
 #include "header.h"
 
-
 /**
  * @brief Nodes of Huffman's Tree
  * 
@@ -85,7 +84,6 @@ void	print_tree(t_node *tree, int level);
  * @param tree 
  */
 void	destroy_tree(t_node *tree);
-
 
 
 #endif

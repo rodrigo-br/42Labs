@@ -1,23 +1,23 @@
-NAME_ENCODER	= encoder_program
+NAME_ENCODER	=	encoder_program
 
-SRC_ENCODER	=	array_utils.c bitwise.c compresser.c encoder.c huffman.c \
-				map_symbols.c occurrence_table.c shm_operations.c
+SRC_ENCODER		=	array_utils.c bitwise.c compresser.c encoder.c huffman.c \
+					map_symbols.c occurrence_table.c shm_operations.c reader.c
 
-MAIN_ENCODER = main.c
+MAIN_ENCODER 	=	main.c
 
-OBJ_ENCODER	=	$(addprefix source/, $(SRC_ENCODER:.c=.o))
-OBJ_ENCODER +=	$(addprefix source/, $(MAIN_ENCODER:.c=.o))
+OBJ_ENCODER		=	$(addprefix source/, $(SRC_ENCODER:.c=.o))
+OBJ_ENCODER 	+=	$(addprefix source/, $(MAIN_ENCODER:.c=.o))
 
-NAME_DECODER	= decoder_program
+NAME_DECODER	=	decoder_program
 
-SRC_DECODER	=	main_decoder.c danielgorithm.c decompresser.c decoder.c
+SRC_DECODER		=	main_decoder.c danielgorithm.c decompresser.c decoder.c
 
-OBJ_DECODER	=	$(addprefix decoder/, $(SRC_DECODER:.c=.o))
-OBJ_DECODER +=	$(addprefix source/, $(SRC_ENCODER:.c=.o))
+OBJ_DECODER		=	$(addprefix decoder/, $(SRC_DECODER:.c=.o))
+OBJ_DECODER 	+=	$(addprefix source/, $(SRC_ENCODER:.c=.o))
 
-CCFLAGS	= -g3 -Wall -Wextra -Werror
+CCFLAGS			=	-g3 -Wall -Wextra -Werror
 
-RM	=	rm -f
+RM				=	rm -f
 
 all:	$(NAME_ENCODER)	$(NAME_DECODER) clean
 

@@ -7,24 +7,23 @@
  * @param map t_map used to map the code of each symbol
  * @param array t_node ** used to store the nodes of the tree and sort then
  */
-static void	destroy_it_all(t_node *tree, t_map map, t_node **array);
+static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data);
 
 
-int main (void)
+int main (int argc, char **argv)
 {
 	setlocale(LC_ALL, "utf8");
 	ask_for_delete_shm();
-	unsigned char	*str = (unsigned char *)strdup("🦙🦙");
+	unsigned char	*str = handle_input(argc, argv);
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
-	int				n_of_symbols;
-	t_bit_array		data;
+	t_bit_array		*data;
 	t_map			map;
 
 
 	// Ocurrence Table
 	count_occurrences(str, &occurrence_table);
-	n_of_symbols = get_n_of_symbols(occurrence_table);
+	int n_of_symbols = get_n_of_symbols(occurrence_table);
 	if (n_of_symbols < 2)
 		return (printf("[BUG] Issue #1"), EXIT_FAILURE);
 
@@ -65,14 +64,14 @@ int main (void)
 
 		//already working
 	t_data_info *info = (t_data_info *)attach_memory_block(FILE, sizeof(t_data_info), 2);
-	info->byte_len = data.byte_len;
-	info->str_len = data.str_len;
+	info->byte_len = data->byte_len;
+	info->str_len = data->str_len;
 	printf("%ld %ld\n", info->byte_len, info->str_len);
 
 		//already working
-	unsigned char *compressed = (unsigned char *)attach_memory_block(FILE, (int)data.byte_len, 1);
-	for (size_t i = 0; i < data.byte_len; i++) {
-		memset(compressed + i, data.bit_array[i], 1);
+	unsigned char *compressed = (unsigned char *)attach_memory_block(FILE, (int)data->byte_len, 1);
+	for (size_t i = 0; i < data->byte_len; i++) {
+		memset(compressed + i, data->bit_array[i], 1);
 	}
 	(void)compressed;
 
@@ -88,8 +87,7 @@ int main (void)
 
 
 	// Free Memory
-	destroy_it_all(huffman_tree, map, array_of_nodes);
-	free(data.bit_array);
+	destroy_it_all(huffman_tree, map, array_of_nodes, data);
 	free(encoded_message);
 	free(str);
 
@@ -97,8 +95,9 @@ int main (void)
 }
 
 
-static void	destroy_it_all(t_node *tree, t_map map, t_node **array)
+static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data)
 {
+	destroy_bit_array(data);
 	destroy_tree(tree);
 	destroy_map(map);
 	free(array);

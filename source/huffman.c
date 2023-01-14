@@ -56,7 +56,7 @@ short	is_leaf(t_node *tree)
 void	print_tree(t_node *tree, int level)
 {
 	if (is_leaf(tree))
-		printf("Leaf: %c, level: %d\n", tree->symbol, level);
+		printf("Leaf: %c (DEC =%d), Occurrence: %d, level: %d\n", tree->symbol, tree->symbol, tree->occurrence, level);
 	else {
 		print_tree(tree->left, level + 1);
 		print_tree(tree->right, level + 1);

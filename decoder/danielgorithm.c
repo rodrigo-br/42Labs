@@ -22,12 +22,12 @@ static void	fill_symbols(unsigned char **symbols, unsigned char *daniel, size_t 
 // Very dangerous. Do not touch it.
 static void split_code_into_map(unsigned char *code, unsigned char **map, unsigned char *symbols)
 {
-	unsigned char mapped_code[8];
+	unsigned char mapped_code[20];
 	size_t code_index = 0;
 	size_t mapped_index = 0;
 	size_t symbols_index = 0;
 
-	bzero(mapped_code, 8);
+	bzero(mapped_code, 20);
 	while (code[code_index])
 	{
 		mapped_code[mapped_index] = code[code_index];
@@ -37,7 +37,7 @@ static void split_code_into_map(unsigned char *code, unsigned char **map, unsign
 		{
 			ft_ustrcat(map[symbols[symbols_index]], mapped_code);
 			symbols_index++;
-			bzero(mapped_code, 8);
+			bzero(mapped_code, 20);
 			if (code[code_index] == '\0')
 				return ;
 			code_index++;
@@ -72,7 +72,7 @@ t_daniel	*danielgorithm(unsigned char *daniel)
 			break;
 		i++;
 	}
-	t_map	map = constroy_map(8);
+	t_map	map = constroy_map(20);
 	fill_symbols(&new_dani->symbols, daniel, i);
 	fill_map_from_daniel(map, daniel, i, new_dani->symbols);
 	new_dani->map = map;

@@ -1,17 +1,24 @@
 #include "../include_headers/header.h"
 
-t_bit_array constroy_bit_array(unsigned char *msg)
+void destroy_bit_array(t_bit_array *data)
 {
-	t_bit_array	data;
+	free(data->bit_array);
+	free(data);
+	data = NULL;
+}
 
-	data.str_len = strlen((char *)msg);
-	data.byte_len = byte_len(data.str_len);
-	data.bit_array = (bits)calloc(data.byte_len, sizeof(unsigned char));
-	for (size_t i = 0; i < data.str_len; i++) {
+t_bit_array *constroy_bit_array(unsigned char *msg)
+{
+	t_bit_array	*data = (t_bit_array *)malloc(sizeof(t_bit_array));
+
+	data->str_len = strlen((char *)msg);
+	data->byte_len = byte_len(data->str_len);
+	data->bit_array = (bits)calloc(data->byte_len, sizeof(unsigned char));
+	for (size_t i = 0; i < data->str_len; i++) {
 		if (msg[i] == '1')
-			set_bit(data.bit_array, i);
+			set_bit(data->bit_array, i);
 		else
-			bit_clear(data.bit_array, i);
+			bit_clear(data->bit_array, i);
 	}
 	return (data);
 }
