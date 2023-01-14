@@ -55,6 +55,7 @@ Os itens a seguir não são obrigatórios, mas são funcionalidades que darão m
 * [Fase 4 - Compactando / Descompactando](#fase-4---compactando--descompactando)
 * [Fase 5 - Compartilhando memória](#fase-5---compartilhando-memória)
 * [Fase 6 - Aplicando Fase 3 e 4 no novo programa](#fase-6---aplicar-a-fase-3-e-4-no-novo-programa)
+* [Fase 7 - MvP](#fase-7---mvp)
 
 ## Fase 1 - Estudo
 
@@ -199,3 +200,21 @@ de problemas como data race e data corruption, e, talvez, por último,
 preparar os dados que serão enviados de volta para o encoder para que ele
 possa exibir as informações.
 
+
+## Fase 7 - MvP
+
+Faltando apenas 1 dia para entrega do projeto, será necessário garantir que o mínimo possa ser apresentado. Para isso, resolvi focar em implementar da forma mais simples possível as seguintes funcionalidades:
+
+- Reader
+	- Parsear informações
+	- Abrir arquivos
+	- Retornar o texto em uma única string
+- Detail
+	- Organizar informação para enviar para o encoder
+	- Printar informação organizada no encoder
+- Clear Memory
+	- Novo Programa/função que libera toda a memória compartilhada dos pelos programas anteriores
+- Help
+	- Criar um "como usar" e uma flag de help que exibe o "como usar" através do terminal
+- Refatorar as funções para melhorar legibilidade
+- Verificar documentação de todas as funções
