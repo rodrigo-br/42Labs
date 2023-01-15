@@ -20,3 +20,22 @@ unsigned char	*encode(t_map map, unsigned char *str)
 
 	return (encoded);
 }
+
+short error(int argc)
+{
+	if (argc >= 2)
+		return (EXIT_SUCCESS);
+
+	printf("Usage: \n./encoder_program [file] \
+			\npress d, enter, any other lether and enter. \
+			\n./decoder_program\n");
+	return (EXIT_FAILURE);
+}
+
+void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data)
+{
+	destroy_bit_array(data);
+	destroy_tree(tree);
+	destroy_map(map);
+	free(array);
+}

@@ -2,13 +2,7 @@
 
 void destroy_all_decoder(t_daniel *daniel_body, void *str);
 
-unsigned long	time_now(void)
-{
-	struct timeval	time;
 
-	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000 + time.tv_usec / 1000);
-}
 
 int main(void)
 {

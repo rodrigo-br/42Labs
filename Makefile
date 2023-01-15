@@ -1,7 +1,8 @@
 NAME_ENCODER	=	encoder_program
 
 SRC_ENCODER		=	array_utils.c bitwise.c compresser.c encoder.c huffman.c \
-					map_symbols.c occurrence_table.c shm_operations.c reader.c
+					map_symbols.c occurrence_table.c shm_operations.c reader.c \
+					encoder_response.c
 
 MAIN_ENCODER 	=	main.c
 

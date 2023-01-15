@@ -17,7 +17,7 @@ static int get_shared_block(char *file, int size, int segment)
 
 	key = ftok(file, segment);
 	if (key == ERROR)
-		return (printf("11"), ERROR);
+		return (ERROR);
 	return (shmget(key, size, 0644 | IPC_CREAT));
 }
 
@@ -26,7 +26,7 @@ void 	*attach_memory_block(char *file, int size, int segment)
 	int 			shared_block_id = get_shared_block(file, size, segment);
 
 	if (shared_block_id == ERROR)
-		return (printf("21"), NULL);
+		return (NULL);
 	return (shmat(shared_block_id, NULL, 0));
 }
 
@@ -40,7 +40,7 @@ short destroy_memory_block(char *file, int segment)
 	int shared_block_id = get_shared_block(file, 0, segment);
 
 	if (shared_block_id == ERROR)
-		return (printf("38"), 0);
+		return (0);
 	return (shmctl(shared_block_id, IPC_RMID, NULL) != ERROR);
 }
 

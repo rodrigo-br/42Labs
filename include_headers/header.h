@@ -16,24 +16,17 @@
 # define OT_SIZE 256
 # define FILE "capybara.svg"
 
-typedef struct s_result
-{
-	size_t			compressed_size;
-	size_t			uncompressed_size;
-	float			time_to_decompress;
-	size_t			aditional_data_size;
-}	t_result;
-
 # include "occurrence_table.h"
 # include "array_utils.h"
 # include "huffman.h"
 # include "map_symbols.h"
-# include "encoder.h"
 # include "compresser.h"
+# include "encoder.h"
 # include "shm_operations.h"
 # include "bitwise.h"
 # include "danielgorithm.h"
 # include "decompresser.h"
+# include "encoder_response.h"
 # include "decoder.h"
 # include "reader.h"
 

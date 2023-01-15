@@ -1,50 +1,11 @@
 #include "../include_headers/header.h"
 
-/**
- * @brief Free the memory of all the important structures in the code
- * 
- * @param tree t_node * huffman's tree used to encode and decode the message
- * @param map t_map used to map the code of each symbol
- * @param array t_node ** used to store the nodes of the tree and sort then
- */
-static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data);
-
-/**
- * @brief check argc and print usage if necessary
- * 
- * @return short returns 1 if theres an error and 0 otherwise
- */
-short error(int argc);
-
-double	compression_ratio(size_t comp, size_t uncomp)
-{
-	return ((double)(uncomp - comp) / (double)(uncomp) * (double)100.0);
-}
-
 int main (int argc, char **argv)
 {
+	setlocale(LC_ALL, "utf8");
+
 	if (argc == 1)
-	{
-		unsigned char	*msg = (unsigned char *)attach_memory_block(FILE, 0, 4);
-		t_result		*result = (t_result *)attach_memory_block(FILE, 0, 5);
-		printf("%s\n", msg);
-		printf("compressed file size in bits: %ld\n", result->compressed_size);
-		printf("uncompressed file size in bits: %ld\n", result->uncompressed_size);
-		printf("Time: %f seconds to decompress\n", result->time_to_decompress);
-		printf("Compression ratio = %.2f%%\n",
-				compression_ratio(result->compressed_size, result->uncompressed_size));
-		printf("Aditional data size: %ld bits\n", result->aditional_data_size);
-		if (result->compressed_size + result->aditional_data_size > result->uncompressed_size)
-			printf("COMPRESSION NOT WORTH IT. INPUT SIZE TOO SMALL\n");
-		printf("Compression ratio considering all data shared: %.2f%%\n",
-				compression_ratio(result->compressed_size + result->aditional_data_size,
-									result->uncompressed_size));
-		detach_memory_block(msg);
-		detach_memory_block(result);
-		destroy_memory_block(FILE, 4);
-		destroy_memory_block(FILE, 5);
-		exit(0);
-	}
+		check_for_results();
 
 
 	// Error check
@@ -53,7 +14,6 @@ int main (int argc, char **argv)
 
 
 	// Declarations
-	setlocale(LC_ALL, "utf8");
 	ask_for_delete_shm();
 	unsigned char	*str = handle_input(argc, argv);
 	int				occurrence_table[OT_SIZE] = {0};
@@ -135,21 +95,6 @@ int main (int argc, char **argv)
 	return (EXIT_SUCCESS);
 }
 
-static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data)
-{
-	destroy_bit_array(data);
-	destroy_tree(tree);
-	destroy_map(map);
-	free(array);
-}
 
-short error(int argc)
-{
-	if (argc >= 2)
-		return (EXIT_SUCCESS);
 
-	printf("Usage: \n./encoder_program [file] \
-			\npress d, enter, any other lether and enter. \
-			\n./decoder_program\n");
-	return (EXIT_FAILURE);
-}
+
