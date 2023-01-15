@@ -13,7 +13,7 @@ int main(void)
 	unsigned char *compressed = (unsigned char *)attach_memory_block(FILE, 0, 1);
 	t_data_info *info = (t_data_info *)attach_memory_block(FILE, 0, 2);
 	unsigned char *huff = (unsigned char *)attach_memory_block(FILE, 0, 3);
-	if (compressed == NULL || info == NULL || huff == NULL)
+	if (compressed == NULL || info == NULL || huff == NULL || *compressed == '\0')
 	{
 		delete_memory_blocks();
 		error(1);
