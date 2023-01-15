@@ -39,3 +39,12 @@ void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data)
 	destroy_map(map);
 	free(array);
 }
+
+void delete_memory_blocks(void)
+{
+	destroy_memory_block(FILE, 1);
+	destroy_memory_block(FILE, 2);
+	destroy_memory_block(FILE, 3);
+	destroy_memory_block(FILE, 4);
+	destroy_memory_block(FILE, 5);
+}

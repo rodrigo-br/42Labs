@@ -44,4 +44,9 @@ void	check_for_results(void);
  */
 void print_result(unsigned char *msg, t_result *result);
 
+/**
+ * @brief print the help message
+ */
+void help(void);
+
 #endif

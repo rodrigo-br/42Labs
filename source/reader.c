@@ -33,6 +33,7 @@ static unsigned char *read_file(int fd)
 	{
 		full_text = ustrjoin(full_text, (unsigned char *)strdup((char *)aux));
 	}
+	close(fd);
 	return (full_text);
 }
 

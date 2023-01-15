@@ -1,14 +1,5 @@
 #include "../include_headers/header.h"
 
-void delete_memory_blocks(void)
-{
-	destroy_memory_block(FILE, 1);
-	destroy_memory_block(FILE, 2);
-	destroy_memory_block(FILE, 3);
-	destroy_memory_block(FILE, 4);
-	destroy_memory_block(FILE, 5);
-}
-
 int main (int argc, char **argv)
 {
 	setlocale(LC_ALL, "utf8");
@@ -16,9 +7,12 @@ int main (int argc, char **argv)
 	if (argc == 1)
 		check_for_results();
 
+
 	// Error check
 	if (error(argc))
 		return (EXIT_FAILURE);
+	if (strcmp(argv[1], "-help") == 0)
+		return (help(), EXIT_SUCCESS);
 
 
 	// Declarations
@@ -54,34 +48,23 @@ int main (int argc, char **argv)
 	unsigned char *encoded_message = encode(map, str);
 
 
-	// Debug
-	// printf("tamanho da msg original = %ld\n", strlen((char *)str));
-	// printf("tamanho da mensagem codificada = %ld\n", strlen((char *)encoded_message));
-
-
 	// Bit Array
 	data = constroy_bit_array(encoded_message);
-	// bit_description(data);
-	// printf("tamanho da msg comprimida = %ld\n", data.byte_len);
 
 
 	// Share Memory
-		//still testing
 	int size_of_daniel = calculate_size(map, n_of_symbols);
 	unsigned char *daniel = (unsigned char *)attach_memory_block(FILE, size_of_daniel, 3);
 	put_things_in_daniel(&daniel, map, occurrence_table);
 
-		//already working
 	t_data_info *info = (t_data_info *)attach_memory_block(FILE, sizeof(t_data_info), 2);
 	info->byte_len = data->byte_len;
 	info->str_len = data->str_len;
 
-		//already working
 	unsigned char *compressed = (unsigned char *)attach_memory_block(FILE, (int)data->byte_len, 1);
 	for (size_t i = 0; i < data->byte_len; i++) {
 		memset(compressed + i, data->bit_array[i], 1);
 	}
-	(void)compressed;
 
 
 	// Detach Memory
@@ -94,7 +77,7 @@ int main (int argc, char **argv)
 	destroy_it_all(huffman_tree, map, array_of_nodes, data);
 	free(encoded_message);
 	free(str);
-
+	printf("Encoded sucessfully!\n");
 	return (EXIT_SUCCESS);
 }
 

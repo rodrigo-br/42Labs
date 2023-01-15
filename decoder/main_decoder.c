@@ -1,7 +1,6 @@
 #include "../include_headers/header.h"
 
-void destroy_all_decoder(t_daniel *daniel_body, void *str);
-
+void destroy_all_decoder(t_daniel *daniel_body, void *str, unsigned char *decoded, t_result *result);
 
 
 int main(void)
@@ -24,7 +23,7 @@ int main(void)
 	unsigned char *decompressed = decompress(compressed, info);
 
 
-	// Decode (SHARE THIS)
+	// Decode (Sharing)
 	unsigned char *decoded = (unsigned char *)attach_memory_block(FILE, info->str_len + 1, 4);
 	decode_msg(daniel_body, decompressed, &decoded);
 
@@ -34,7 +33,6 @@ int main(void)
 
 
 	// Share Back to Encode
-		//still testing
 	t_result *result = attach_memory_block(FILE, sizeof(t_result), 5);
 
 
@@ -45,35 +43,26 @@ int main(void)
 	result->aditional_data_size = (sizeof(info) * 8) + (strlen((char *)daniel) * 8);
 
 
-	// Debug
-	// printf("%s\n", decoded);
-	// printf("compressed file size in bits: %ld\n", result->compressed_size);
-	// printf("uncompressed file size in bits: %ld\n", result->uncompressed_size);
-	// printf("Time: %f seconds to decompress\n", result->time_to_decompress);
-	// printf("Compression ratio = %.2f%%\n",
-	// 		compression_ratio(result->compressed_size, result->uncompressed_size));
-	// printf("Aditional data size: %ld bits\n", result->aditional_data_size);
-	// if (result->compressed_size + result->aditional_data_size > result->uncompressed_size)
-	// 	printf("COMPRESSION NOT WORTH IT. INPUT SIZE TOO SMALL\n");
-	// printf("Compression ratio considering all data shared: %.2f%%\n",
-	// 		compression_ratio(result->compressed_size + result->aditional_data_size,
-	// 							result->uncompressed_size));
-
-
 	// Free memory
-	destroy_all_decoder(daniel_body, decompressed);
-	detach_memory_block(decoded);
-	detach_memory_block(result);
-	destroy_memory_block(FILE, 1);
-	destroy_memory_block(FILE, 2);
-	destroy_memory_block(FILE, 3);
+	destroy_all_decoder(daniel_body, decompressed, decoded, result);
+	printf("Decoded sucessfully!\n");
 }
 
-void destroy_all_decoder(t_daniel *daniel_body, void *str)
+void destroy_all_decoder(t_daniel *daniel_body, void *str, unsigned char *decoded, t_result *result)
 {
+	// Free
 	free(str);
 	free(daniel_body->symbols);
 	destroy_map(daniel_body->map);
 	free(daniel_body);
+
+	// Detach
+	detach_memory_block(decoded);
+	detach_memory_block(result);
+
+	// Destroy
+	destroy_memory_block(FILE, 1);
+	destroy_memory_block(FILE, 2);
+	destroy_memory_block(FILE, 3);
 }
 

@@ -30,4 +30,11 @@ short error(int argc);
  */
 void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data);
 
+
+/**
+ * @brief destroy all shared memory blocks that can be used by the encoder and
+ * decoder
+ */
+void delete_memory_blocks(void);
+
 #endif
