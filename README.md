@@ -49,6 +49,7 @@ Os itens a seguir não são obrigatórios, mas são funcionalidades que darão m
 
 # Sumário
 
+* [Como usar](#como-usar)
 * [Fase 1 - Estudo](#fase-1---estudo)
 * [Fase 2 - Construção das principais estruturas de dados](#fase-2---construção-das-principais-estruturas-de-dados)
 * [Fase 3 - Entendendo Encode / Decode](#fase-3---encode--decode)
@@ -56,6 +57,18 @@ Os itens a seguir não são obrigatórios, mas são funcionalidades que darão m
 * [Fase 5 - Compartilhando memória](#fase-5---compartilhando-memória)
 * [Fase 6 - Aplicando Fase 3 e 4 no novo programa](#fase-6---aplicar-a-fase-3-e-4-no-novo-programa)
 * [Fase 7 - MvP](#fase-7---mvp)
+
+## Como usar
+
+```
+git clone git@github.com:rodrigo-br/42Labs.git
+
+cd 42Labs/
+
+make
+
+./encoder_program -help
+```
 
 ## Fase 1 - Estudo
 

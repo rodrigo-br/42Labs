@@ -23,7 +23,7 @@ static int get_shared_block(char *file, int size, int segment)
 
 void 	*attach_memory_block(char *file, int size, int segment)
 {
-	int 			shared_block_id = get_shared_block(file, size, segment);
+	int	shared_block_id = get_shared_block(file, size, segment);
 
 	if (shared_block_id == ERROR)
 		return (NULL);
