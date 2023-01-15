@@ -277,5 +277,23 @@ mandatório. Entre esses pontos, destaco alguns que gostaria de ter acrescentado
 	acabou e não consegui voltar nesses pontos e criar soluções melhores.
 </details>
 
+<details>
+	<summary>
+		Código mais limpo
+	</summary>
+
+	Embora eu considere que o código apresentado evite complexidades
+	desnecessárias, vejo muitos pontos que gostaria de ter melhorado, como
+	por exemplo: a quantidade massiva de "unsigned char *" que precisa ser
+	castada pra char e recastada pra "char *" diversas vezes pode poluir
+	um pouco a parte inicial das funções. Gostaria de ter criado algumas
+	abstrações para mascarar essas operações, ao invés de deixar todas
+	tão explicitas logo na main, por exemplo.
+
+	Outro ponto que gostaria de ter dado mais atenção é ao nome de algumas
+	funções e variáveis. Dar uma relida no meu projeto inteiro e reavaliar os
+	nomes.
+</details>
+
 
 ![Imagem de um cachorro](https://user-images.githubusercontent.com/72653838/212486183-f824aaae-4fb1-459b-b757-2757c6270ff9.png)
