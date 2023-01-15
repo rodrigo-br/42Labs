@@ -16,10 +16,43 @@ static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array 
  */
 short error(int argc);
 
+double	compression_ratio(size_t comp, size_t uncomp)
+{
+	return ((double)(uncomp - comp) / (double)(uncomp) * (double)100.0);
+}
+
 int main (int argc, char **argv)
 {
+	if (argc == 1)
+	{
+		unsigned char	*msg = (unsigned char *)attach_memory_block(FILE, 0, 4);
+		t_result		*result = (t_result *)attach_memory_block(FILE, 0, 5);
+		printf("%s\n", msg);
+		printf("compressed file size in bits: %ld\n", result->compressed_size);
+		printf("uncompressed file size in bits: %ld\n", result->uncompressed_size);
+		printf("Time: %f seconds to decompress\n", result->time_to_decompress);
+		printf("Compression ratio = %.2f%%\n",
+				compression_ratio(result->compressed_size, result->uncompressed_size));
+		printf("Aditional data size: %ld bits\n", result->aditional_data_size);
+		if (result->compressed_size + result->aditional_data_size > result->uncompressed_size)
+			printf("COMPRESSION NOT WORTH IT. INPUT SIZE TOO SMALL\n");
+		printf("Compression ratio considering all data shared: %.2f%%\n",
+				compression_ratio(result->compressed_size + result->aditional_data_size,
+									result->uncompressed_size));
+		detach_memory_block(msg);
+		detach_memory_block(result);
+		destroy_memory_block(FILE, 4);
+		destroy_memory_block(FILE, 5);
+		exit(0);
+	}
+
+
+	// Error check
 	if (error(argc))
 		return (EXIT_FAILURE);
+
+
+	// Declarations
 	setlocale(LC_ALL, "utf8");
 	ask_for_delete_shm();
 	unsigned char	*str = handle_input(argc, argv);
@@ -47,6 +80,7 @@ int main (int argc, char **argv)
 	fill_map(map, huffman_tree, (unsigned char *)"", get_height(huffman_tree));
 	if (n_of_symbols == 1)
 		strcpy((char *)map[array_of_nodes[0]->symbol], "0");
+
 
 	// Encode
 	unsigned char *encoded_message = encode(map, str);
@@ -100,7 +134,6 @@ int main (int argc, char **argv)
 
 	return (EXIT_SUCCESS);
 }
-
 
 static void	destroy_it_all(t_node *tree, t_map map, t_node **array, t_bit_array *data)
 {

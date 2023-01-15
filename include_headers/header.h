@@ -11,9 +11,18 @@
 # include <sys/shm.h>	// shm
 # include <locale.h>	// setlocale
 # include <fcntl.h>		// open
+# include <sys/time.h>	// gettimeofday
 
 # define OT_SIZE 256
 # define FILE "capybara.svg"
+
+typedef struct s_result
+{
+	size_t			compressed_size;
+	size_t			uncompressed_size;
+	float			time_to_decompress;
+	size_t			aditional_data_size;
+}	t_result;
 
 # include "occurrence_table.h"
 # include "array_utils.h"

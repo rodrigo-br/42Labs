@@ -18,21 +18,17 @@ static unsigned char *find_symbol(t_daniel *daniel_body, unsigned char *decompre
 	return (NULL);
 }
 
-unsigned char *decode_msg(t_daniel *daniel_body, unsigned char *decompressed, size_t len)
+void decode_msg(t_daniel *daniel_body, unsigned char *decompressed, unsigned char **decoded)
 {
-	unsigned char *decoded;
 	unsigned char *symbol;
 	size_t i;
 
-	decoded = (unsigned char *)calloc(len + 1, sizeof(unsigned char));
 	while (*decompressed) {
 		i = 0;
 		while (!(symbol = find_symbol(daniel_body, decompressed, &i)))
 			i++;
-		ft_ustrcat(decoded, symbol);
+		ft_ustrcat(*decoded, symbol);
 		free(symbol);
 		decompressed += i;
-		
 	}
-	return (decoded);
 }
