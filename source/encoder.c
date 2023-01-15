@@ -48,3 +48,10 @@ void delete_memory_blocks(void)
 	destroy_memory_block(FILE, 4);
 	destroy_memory_block(FILE, 5);
 }
+
+void detach_all_from_encode(void *compressed, void *info, void *daniel)
+{
+	detach_memory_block(compressed);
+	detach_memory_block(info);
+	detach_memory_block(daniel);
+}

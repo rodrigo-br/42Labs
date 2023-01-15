@@ -4,11 +4,10 @@ int main (int argc, char **argv)
 {
 	setlocale(LC_ALL, "utf8");
 
+
+	// First checkers
 	if (argc == 1)
 		check_for_results();
-
-
-	// Error check
 	if (error(argc))
 		return (EXIT_FAILURE);
 	if (strcmp(argv[1], "-help") == 0)
@@ -56,21 +55,15 @@ int main (int argc, char **argv)
 	int size_of_daniel = calculate_size(map, n_of_symbols);
 	unsigned char *daniel = (unsigned char *)attach_memory_block(FILE, size_of_daniel, 3);
 	put_things_in_daniel(&daniel, map, occurrence_table);
-
 	t_data_info *info = (t_data_info *)attach_memory_block(FILE, sizeof(t_data_info), 2);
 	info->byte_len = data->byte_len;
 	info->str_len = data->str_len;
-
 	unsigned char *compressed = (unsigned char *)attach_memory_block(FILE, (int)data->byte_len, 1);
-	for (size_t i = 0; i < data->byte_len; i++) {
-		memset(compressed + i, data->bit_array[i], 1);
-	}
+	memcpy(compressed, data->bit_array, data->byte_len);
 
 
 	// Detach Memory
-	detach_memory_block((void *)compressed);
-	detach_memory_block((void *)info);
-	detach_memory_block((void *)daniel);
+	detach_all_from_encode((void *)compressed, (void *)info, (void *)daniel);
 
 
 	// Free Memory
