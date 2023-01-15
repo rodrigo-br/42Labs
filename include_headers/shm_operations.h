@@ -65,12 +65,6 @@ void	put_things_in_daniel(unsigned char **daniel, t_map map, int (occurrence_tab
 void	ft_ustrcat(unsigned char *dst, unsigned char *src);
 
 /**
- * @brief ask for the input of the user to delete the shared memory or not
- * 
- */
-void	ask_for_delete_shm(void);
-
-/**
  * @brief Simple function to print the coded message puting space every 8 chars
  * to make it easier to read and count the bytes
  * 

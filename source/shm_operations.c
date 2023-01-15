@@ -113,19 +113,6 @@ void	put_things_in_daniel(unsigned char **daniel, t_map map, int (occurrence_tab
 	put_symbols_in_daniel(daniel, occurrence_table);
 }
 
-void	ask_for_delete_shm(void)
-{
-	char c;
-	printf("(d) destroy memory\n(other) continue\n");
-	scanf(" %c", &c);
-	if (c == 'd')
-	{
-		destroy_memory_block(FILE, 1);
-		destroy_memory_block(FILE, 2);
-		destroy_memory_block(FILE, 3);
-	}
-}
-
 void print_coded(unsigned char *str)
 {
 	int	i = 0;

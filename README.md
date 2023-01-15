@@ -224,5 +224,7 @@ Faltando apenas 1 dia para entrega do projeto, será necessário garantir que o 
 
 - Verificar documentação de todas as funções
 
+![Gif utilizando os programas](mvp_huffman.gif)
 
-![Untitled_design_1](https://user-images.githubusercontent.com/72653838/212486183-f824aaae-4fb1-459b-b757-2757c6270ff9.png)
+
+![Imagem de um cachorro](https://user-images.githubusercontent.com/72653838/212486183-f824aaae-4fb1-459b-b757-2757c6270ff9.png)

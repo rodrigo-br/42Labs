@@ -1,5 +1,14 @@
 #include "../include_headers/header.h"
 
+void delete_memory_blocks(void)
+{
+	destroy_memory_block(FILE, 1);
+	destroy_memory_block(FILE, 2);
+	destroy_memory_block(FILE, 3);
+	destroy_memory_block(FILE, 4);
+	destroy_memory_block(FILE, 5);
+}
+
 int main (int argc, char **argv)
 {
 	setlocale(LC_ALL, "utf8");
@@ -7,14 +16,13 @@ int main (int argc, char **argv)
 	if (argc == 1)
 		check_for_results();
 
-
 	// Error check
 	if (error(argc))
 		return (EXIT_FAILURE);
 
 
 	// Declarations
-	ask_for_delete_shm();
+	delete_memory_blocks();
 	unsigned char	*str = handle_input(argc, argv);
 	int				occurrence_table[OT_SIZE] = {0};
 	t_node			**array_of_nodes;
@@ -67,7 +75,6 @@ int main (int argc, char **argv)
 	t_data_info *info = (t_data_info *)attach_memory_block(FILE, sizeof(t_data_info), 2);
 	info->byte_len = data->byte_len;
 	info->str_len = data->str_len;
-	printf("%ld %ld\n", info->byte_len, info->str_len);
 
 		//already working
 	unsigned char *compressed = (unsigned char *)attach_memory_block(FILE, (int)data->byte_len, 1);
@@ -81,10 +88,6 @@ int main (int argc, char **argv)
 	detach_memory_block((void *)compressed);
 	detach_memory_block((void *)info);
 	detach_memory_block((void *)daniel);
-
-
-	// Destroy Memory
-	ask_for_delete_shm();
 
 
 	// Free Memory
