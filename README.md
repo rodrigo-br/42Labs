@@ -240,4 +240,42 @@ Faltando apenas 1 dia para entrega do projeto, será necessário garantir que o 
 ![Gif utilizando os programas](mvp_huffman.gif)
 
 
+## O que faltou
+
+Com o fim do prazo, foi possível entregar o mvp proposto, porém ficou bem mais
+simples do que eu esperava.
+
+Como a atividade envolvia diversos novos aprendizados e pouquíssimo tempo, 
+considero aceitável ter deixado alguns pontos pendentes para completar 100% do
+mandatório. Entre esses pontos, destaco alguns que gostaria de ter acrescentado:
+
+<details>
+	<summary>
+		Opção de manter o encoder aberto.
+	</summary>
+
+	Inicialmente, o plano era que o encoder
+	pudesse continuar aberto, esperando uma resposta do decoder para que então ele
+	exibisse as informações contidas na resposta e depois encerrasse corretamente.
+	Ao invés disso, fiz o encoder encerrando após codificar o código, sendo necessário
+	que seja chamado manualmente novamente após o decoder.
+</details>
+
+
+<details>
+	<summary>
+		Melhorar performance dos algoritmos do encoder.
+	</summary>
+
+	Embora o desafio não envolvesse
+	o tempo de execução do encoder, apenas do decoder e apenas no Bônus, sinto que
+	o meu encoder ficou com uma performance baixa, sendo extremamente lento para
+	codificar arquivos com mais de 100 000 bytes, por exemplo o lorem_ipsum na raiz
+	do repositório. Diversas partes do encoder eu foquei em agilidade para entrega
+	do projeto, fazendo callocs de tamanhos fixos e desnecessários para poder
+	economizar tempo de planejamento e entregar o mandatório. Infelizmente, o tempo
+	acabou e não consegui voltar nesses pontos e criar soluções melhores.
+</details>
+
+
 ![Imagem de um cachorro](https://user-images.githubusercontent.com/72653838/212486183-f824aaae-4fb1-459b-b757-2757c6270ff9.png)
