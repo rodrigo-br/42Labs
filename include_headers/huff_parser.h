@@ -1,21 +1,21 @@
-#ifndef DANIELGORITHM_H
-# define DANIELGORITHM_H
+#ifndef HUFF_PARSER_H
+# define HUFF_PARSER_H
 
 #include "header.h"
 
-typedef struct s_daniel
+typedef struct s_huff
 {
 	t_map			map;
 	unsigned char	*symbols;
-}	t_daniel;
+}	t_huff;
 
 /**
  * @brief Parse the shared memory block containing the map and the symbols
  * into relevant data that can be used to recreate the original message
  * 
- * @param daniel unsigned char * unparsed data
- * @return t_daniel*  parsed data
+ * @param huff unsigned char * unparsed data
+ * @return t_huff*  parsed data
  */
-t_daniel	*danielgorithm(unsigned char *daniel);
+t_huff	*huffgorithm(unsigned char *huff);
 
 #endif

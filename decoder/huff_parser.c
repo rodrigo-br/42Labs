@@ -5,15 +5,15 @@ static short find_spot(char c1, char c2)
 	return (c1 == ' ' && c2 == ' ');
 }
 
-static void	fill_symbols(unsigned char **symbols, unsigned char *daniel, size_t spot)
+static void	fill_symbols(unsigned char **symbols, unsigned char *huff, size_t spot)
 {
 	size_t i = 0;
 
-	*symbols = (unsigned char *)calloc(strlen((char *)&daniel[spot + 2]), sizeof(unsigned char));
+	*symbols = (unsigned char *)calloc(strlen((char *)&huff[spot + 2]), sizeof(unsigned char));
 	spot += 2;
-	while (daniel[spot])
+	while (huff[spot])
 	{
-		(*symbols)[i] = daniel[spot];
+		(*symbols)[i] = huff[spot];
 		i++;
 		spot ++;
 	}
@@ -46,35 +46,35 @@ static void split_code_into_map(unsigned char *code, unsigned char **map, unsign
 	}
 }
 
-static void	fill_map_from_daniel(t_map map, unsigned char *daniel, size_t spot, unsigned char *symbols)
+static void	fill_map_from_huff(t_map map, unsigned char *huff, size_t spot, unsigned char *symbols)
 {
 	size_t i = 0; 
 
 	unsigned char code[spot + 1];
 	while (i < spot)
 	{
-		code[i] = daniel[i];
+		code[i] = huff[i];
 		i++;
 	}
 	code[i] = '\0';
 	split_code_into_map(code, map, symbols);
 }
 
-t_daniel	*danielgorithm(unsigned char *daniel)
+t_huff	*huffgorithm(unsigned char *huff)
 {
-	t_daniel	*new_dani;
+	t_huff	*new_dani;
 	size_t i = 0;
 
-	new_dani = (t_daniel *)calloc(1, sizeof(t_daniel));
-	while (daniel[i])
+	new_dani = (t_huff *)calloc(1, sizeof(t_huff));
+	while (huff[i])
 	{
-		if (find_spot(daniel[i], daniel[i + 1]))
+		if (find_spot(huff[i], huff[i + 1]))
 			break;
 		i++;
 	}
 	t_map	map = constroy_map(20);
-	fill_symbols(&new_dani->symbols, daniel, i);
-	fill_map_from_daniel(map, daniel, i, new_dani->symbols);
+	fill_symbols(&new_dani->symbols, huff, i);
+	fill_map_from_huff(map, huff, i, new_dani->symbols);
 	new_dani->map = map;
 	return (new_dani);
 }

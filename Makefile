@@ -11,7 +11,7 @@ OBJ_ENCODER 	+=	$(addprefix source/, $(MAIN_ENCODER:.c=.o))
 
 NAME_DECODER	=	decoder_program
 
-SRC_DECODER		=	main_decoder.c danielgorithm.c decompresser.c decoder.c
+SRC_DECODER		=	main_decoder.c huff_parser.c decompresser.c decoder.c
 
 OBJ_DECODER		=	$(addprefix decoder/, $(SRC_DECODER:.c=.o))
 OBJ_DECODER 	+=	$(addprefix source/, $(SRC_ENCODER:.c=.o))

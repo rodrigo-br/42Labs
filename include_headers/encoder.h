@@ -41,6 +41,6 @@ void delete_memory_blocks(void);
 /**
  * @brief detach all shared memory blocks that can be used by the encoder 
  */
-void detach_all_from_encode(void *compressed, void *info, void *daniel);
+void detach_all_from_encode(void *compressed, void *info, void *huff);
 
 #endif

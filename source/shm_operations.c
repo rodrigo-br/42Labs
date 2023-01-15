@@ -76,7 +76,7 @@ void	ft_ustrcat(unsigned char *dst, unsigned char *src)
 	dst[index] = '\0';
 }
 
-void	put_map_in_daniel(unsigned char **daniel, t_map map)
+void	put_map_in_huff(unsigned char **huff, t_map map)
 {
 	int index = 0;
 
@@ -84,15 +84,15 @@ void	put_map_in_daniel(unsigned char **daniel, t_map map)
 	{
 		if (strlen((char *)map[index]))
 		{
-			ft_ustrcat(*daniel, map[index]);
-			ft_ustrcat(*daniel, (unsigned char *)" ");
+			ft_ustrcat(*huff, map[index]);
+			ft_ustrcat(*huff, (unsigned char *)" ");
 		}
 		index++;
 	}
-	ft_ustrcat(*daniel, (unsigned char *)" ");
+	ft_ustrcat(*huff, (unsigned char *)" ");
 }
 
-void	put_symbols_in_daniel(unsigned char **daniel, int (occurrence_table)[OT_SIZE])
+void	put_symbols_in_huff(unsigned char **huff, int (occurrence_table)[OT_SIZE])
 {
 	int i = 0;
 	
@@ -103,16 +103,16 @@ void	put_symbols_in_daniel(unsigned char **daniel, int (occurrence_table)[OT_SIZ
 			unsigned char str_convert[2];
 			str_convert[0] = i;
 			str_convert[1] = '\0';
-			ft_ustrcat(*daniel, str_convert);
+			ft_ustrcat(*huff, str_convert);
 		}
 		i++;
 	}
 }
 
-void	put_things_in_daniel(unsigned char **daniel, t_map map, int (occurrence_table)[OT_SIZE])
+void	put_things_in_huff(unsigned char **huff, t_map map, int (occurrence_table)[OT_SIZE])
 {
-	put_map_in_daniel(daniel, map);
-	put_symbols_in_daniel(daniel, occurrence_table);
+	put_map_in_huff(huff, map);
+	put_symbols_in_huff(huff, occurrence_table);
 }
 
 void print_coded(unsigned char *str)

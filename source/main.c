@@ -51,9 +51,9 @@ int main (int argc, char **argv)
 
 
 	// Share Memory
-	int size_of_daniel = calculate_size(map, n_of_symbols);
-	unsigned char *daniel = (unsigned char *)attach_memory_block(FILE, size_of_daniel, 3);
-	put_things_in_daniel(&daniel, map, occurrence_table);
+	int size_of_huff = calculate_size(map, n_of_symbols);
+	unsigned char *huff = (unsigned char *)attach_memory_block(FILE, size_of_huff, 3);
+	put_things_in_huff(&huff, map, occurrence_table);
 	t_data_info *info = (t_data_info *)attach_memory_block(FILE, sizeof(t_data_info), 2);
 	info->byte_len = data->byte_len;
 	info->str_len = data->str_len;
@@ -62,7 +62,7 @@ int main (int argc, char **argv)
 
 
 	// Detach Memory
-	detach_all_from_encode((void *)compressed, (void *)info, (void *)daniel);
+	detach_all_from_encode((void *)compressed, (void *)info, (void *)huff);
 
 
 	// Free Memory

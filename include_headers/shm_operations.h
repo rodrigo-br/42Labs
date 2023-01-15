@@ -50,11 +50,11 @@ int		calculate_size(t_map map, int n_of_symbols);
  * @brief wrap map and symbols in a single unsigned char * to be stored
  * in the shared memory
  * 
- * @param daniel reference of unsigned char *
+ * @param huff reference of unsigned char *
  * @param map t_map
  * @param occurrence_table int[OT_SIZE]
  */
-void	put_things_in_daniel(unsigned char **daniel, t_map map, int (occurrence_table)[OT_SIZE]);
+void	put_things_in_huff(unsigned char **huff, t_map map, int (occurrence_table)[OT_SIZE]);
 
 /**
  * @brief recoding strcat for unsigned char * inputs

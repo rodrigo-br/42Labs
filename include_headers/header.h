@@ -24,7 +24,7 @@
 # include "encoder.h"
 # include "shm_operations.h"
 # include "bitwise.h"
-# include "danielgorithm.h"
+# include "huff_parser.h"
 # include "decompresser.h"
 # include "encoder_response.h"
 # include "decoder.h"
