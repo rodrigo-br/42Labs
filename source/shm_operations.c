@@ -61,6 +61,8 @@ void	ft_ustrcat(unsigned char *dst, unsigned char *src)
 	size_t	index;
 	size_t	index_aux;
 
+	if (!dst || !src)
+		return ;
 	index = 0;
 	index_aux = 0;
 	while (dst[index])

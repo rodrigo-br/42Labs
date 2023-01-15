@@ -25,12 +25,15 @@ static unsigned char	*ustrjoin(unsigned char *s1, unsigned char *s2)
 
 static unsigned char *read_file(int fd)
 {
-	unsigned char *full_text = (unsigned char *)strdup("");
-	unsigned char aux[2];
+	unsigned char	*full_text = (unsigned char *)strdup("");
+	unsigned char	aux[1025];
+	ssize_t 		bytes_read;
 
-	bzero(aux, 2);
-	while (read(fd, &aux[0], 1) > 0)
+	bzero(aux, sizeof(aux));
+	while ((bytes_read = read(fd, &aux[0], 1024)) > 0)
 	{
+		if (bytes_read < 1024)
+			aux[bytes_read] = '\0';
 		full_text = ustrjoin(full_text, (unsigned char *)strdup((char *)aux));
 	}
 	close(fd);

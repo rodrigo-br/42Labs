@@ -4,7 +4,6 @@ int main (int argc, char **argv)
 {
 	setlocale(LC_ALL, "utf8");
 
-
 	// First checkers
 	if (argc == 1)
 		check_for_results();
@@ -71,9 +70,6 @@ int main (int argc, char **argv)
 	free(encoded_message);
 	free(str);
 	printf("Encoded sucessfully!\n");
+
 	return (EXIT_SUCCESS);
 }
-
-
-
-
